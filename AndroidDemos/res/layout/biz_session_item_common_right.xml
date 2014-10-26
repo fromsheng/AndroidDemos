@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/session_item_common_right"
+    android:orientation="vertical" >
+    
+    <TextView android:id="@+id/session_item_common_tv_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="2014-06-16 15:20:22"
+        android:gravity="center"/>
+    
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical">
+            <TextView android:id="@+id/session_item_common_tv_username"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Artion"/>
+            
+            <ViewStub android:id="@+id/session_item_common_vs_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            
+            <LinearLayout android:id="@+id/session_item_common_ll_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+        
+        <ImageView android:id="@+id/session_item_common_iv_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/common_btn_app_down"/>
+    </LinearLayout>
+    
+
+</LinearLayout>

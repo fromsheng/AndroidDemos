@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/session_item_common_share"
+    android:orientation="vertical" >
+    
+	<TextView android:id="@+id/session_item_common_share_tv_title"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />
+    
+	<ImageView android:id="@+id/session_item_common_share_iv_icon"
+	    android:layout_width="48dp"
+	    android:layout_height="48dp"
+	    android:src="@drawable/ic_launcher"/>
+    
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/timeline_item_single_image"
+    android:background="#999"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    
+    <LinearLayout android:id="@+id/timeline_item_ll_0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"></LinearLayout>
+
+    <ImageView
+        android:id="@+id/timeline_item_single_image_pic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:minHeight="50dip"
+        android:minWidth="50dip"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/timeline_item_single_image_gif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/timeline_item_single_image_pic"
+        android:layout_alignBottom="@id/timeline_item_single_image_pic"
+        android:layout_alignRight="@id/timeline_item_single_image_pic"
+        android:layout_marginBottom="10dip"
+        android:layout_marginRight="10dip"
+        android:src="@drawable/ic_launcher"
+         />
+
+    <ImageView
+        android:id="@+id/timeline_item_single_image_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher"
+         />
+
+    <TextView
+        android:id="@+id/timeline_item_single_image_filesize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#88000000"
+        android:clickable="false"
+        android:text="200k"
+        android:textColor="#fff4f4f4"
+        android:textSize="12sp"
+        android:layout_alignBaseline="@id/timeline_item_single_image_pic"
+		android:layout_alignBottom="@id/timeline_item_single_image_pic"
+		android:layout_alignRight="@id/timeline_item_single_image_pic"
+		android:layout_marginBottom="3dip"
+		android:layout_marginRight="10dip" />
+
+</RelativeLayout>

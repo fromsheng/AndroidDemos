@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:id="@+id/session_mention_item"
+    android:background="#66000000"
+    android:padding="5dp" >
+    
+    <TextView android:id="@+id/session_mention_tv_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="[有人@了你] 你不去看看吗？"/>
+	<ImageView android:id="@+id/session_mention_icon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/common_btn_college_normal"/>
+</LinearLayout>

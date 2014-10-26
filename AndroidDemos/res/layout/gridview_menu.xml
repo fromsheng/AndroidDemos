@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="菜单布局"/>
+    
+    <com.artion.androiddemos.view.DragGridView
+ 	android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_img_toolbar_normal"
+        android:layout_alignParentBottom="true"
+        android:numColumns="5" />
+    
+<!--     <com.studioirregular.dragsortgridview.DragSortGridView -->
+<!--  	android:id="@+id/gridview" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentBottom="true" -->
+<!--         android:numColumns="5" /> -->
+</RelativeLayout>

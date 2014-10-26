@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff" >
+    
+	
+    
+    <TextView android:id="@+id/tv"
+        android:layout_width="fill_parent"
+        android:layout_height="100px"
+        android:gravity="center"
+        android:layout_below="@+id/btn"
+        android:background="#999"
+        android:text="这是追加的头部"/>
+    
+    
+    
+    <ListView android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#fff"
+        android:layout_below="@+id/btn"></ListView>
+    
+    <Button android:id="@+id/btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="show"
+        android:background="@drawable/selector_btn_blue"
+        android:layout_alignParentTop="true"/>
+    
+    <LinearLayout android:id="@+id/ll_out"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tv"
+        android:clickable="true"
+        android:background="#77000000"
+        android:orientation="vertical"></LinearLayout>
+</RelativeLayout>

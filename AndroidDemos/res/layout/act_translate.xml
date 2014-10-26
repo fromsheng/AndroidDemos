@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+
+    <ImageView android:id="@+id/trans_iv"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="-50dp"
+        android:background="#00ff00"/>
+    
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        下拉样式修改：
+        "/>
+    
+    <Button android:id="@+id/trans_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="slide"
+        android:layout_alignParentBottom="true"/>
+    
+</RelativeLayout>

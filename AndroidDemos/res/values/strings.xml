@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- 这个id供view双击时setTag(int id, tag)和getTag(int id)使用，保存时间 -->
+    <item type="id" name="tag_view_double_click"></item>
+    <item type="id" name="tag_view_double_times"></item>
+
+    <string name="app_name">AndroidDemos</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="tips">我们已发送%s到你的手机上</string>
+    <string name="tips_center">验证码短信</string>
+    
+ 
+    <string name="desc_shrinkup">收起</string>
+    <string name="desc_spread">显示更多</string>
+    
+    <string name="footer_menu_status">动态</string>
+	<string name="footer_menu_message">消息</string>
+	<string name="footer_menu_work">待办</string>
+	<string name="footer_menu_college">通讯录</string>
+	<string name="footer_menu_app">应用</string>
+	<string name="footer_menu_discovery">发现</string>
+</resources>
