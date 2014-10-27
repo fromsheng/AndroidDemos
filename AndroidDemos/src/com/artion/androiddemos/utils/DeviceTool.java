@@ -565,7 +565,7 @@ public class DeviceTool {
 	
 	/**
 	 * 控件是否被连续点击多少次
-	 * @param view
+	 * @param view 控件必须设置id
 	 * @param MAX_COUNT 点击最大次数响应
 	 * @param DIFF_TIME 点击时间差（毫秒），可选500，或 1000等
 	 * @return
@@ -610,7 +610,7 @@ public class DeviceTool {
 	
 	/**
 	 * 控件被连续点击多少次之后响应
-	 * @param view
+	 * @param view 控件必须设置id
 	 * @param DIFF_TIME 点击时间差（毫秒），可选300，500，或 1000等
 	 * @param listener 控件点击响应包含点击次数
 	 * @return
