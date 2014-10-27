@@ -7,6 +7,7 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 import com.artion.androiddemos.R;
+import com.artion.androiddemos.utils.TimerUtils.TimerListener;
 
 import android.Manifest;
 import android.app.Activity;
@@ -605,5 +606,64 @@ public class DeviceTool {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * 控件被连续点击多少次之后响应
+	 * @param view
+	 * @param DIFF_TIME 点击时间差（毫秒），可选300，500，或 1000等
+	 * @param listener 控件点击响应包含点击次数
+	 * @return
+	 */
+	public static int onViewClickTimes(final View view, final int DIFF_TIME, final OnViewClickListener listener) {
+		final int TAG_ID_CLICKTIMES = view.getId() + 20;
+		final int TAG_ID_TIMERUTILS = view.getId() + 30;
+		
+		Integer count1 = (Integer) view.getTag(TAG_ID_CLICKTIMES);
+		TimerUtils timer = (TimerUtils) view.getTag(TAG_ID_TIMERUTILS);
+		
+		if(count1 == null) {
+			count1 = Integer.valueOf(0);
+		}
+		
+		if(timer == null) {
+			timer = new TimerUtils();
+			view.setTag(TAG_ID_TIMERUTILS, timer);
+		}
+		
+		view.setTag(TAG_ID_CLICKTIMES, ++ count1);
+		
+		
+		timer.startTimer(DIFF_TIME, new TimerListener() {
+			
+			@Override
+			public void timeOnTick(long seconds) {
+			}
+			
+			@Override
+			public void timeOnFinish() {
+				DebugTool.info("DeviceTool", "onViewClickTimes + " + (Integer) view.getTag(TAG_ID_CLICKTIMES));
+				if(listener != null) {
+					listener.onClickListener(view, (Integer) view.getTag(TAG_ID_CLICKTIMES));
+				}
+				
+				view.setTag(TAG_ID_CLICKTIMES, Integer.valueOf(0));
+			}
+		});
+		return 0;
+	}
+	
+	/**
+	 * 控件点击响应包含点击次数响应接口
+	 * @author jinsheng_cai
+	 * @since 2014-10-27
+	 */
+	public interface OnViewClickListener {
+		/**
+		 * 点击响应
+		 * @param view
+		 * @param clickTimes 被点击次数
+		 */
+		public void onClickListener(View view, int clickTimes);
 	}
 }
