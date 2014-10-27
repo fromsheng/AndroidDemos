@@ -19,6 +19,7 @@ import com.artion.androiddemos.dialog.KdAlertBuilder.KdAlertItemListener;
 import com.artion.androiddemos.highlight.HighLightTextViewDemo;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DebugTool;
+import com.artion.androiddemos.utils.DeviceTool;
 import com.artion.androiddemos.utils.ToastUtils;
 
 public class MainActivity extends BaseActivity implements OnClickListener{
@@ -178,7 +179,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			
 			break;
 		case R.id.button10:
-			ToastUtils.showMessage(MainActivity.this, "好看哦");
+			if(DeviceTool.isOnViewClickCount(v, 5, 1000)) {
+				ToastUtils.showMessage(MainActivity.this, "好看哦");
+			}
 			break;
 		case R.id.button11:
 			ActivityIntentTools.gotoActivityNotFinish(MainActivity.this, TextViewLongDemo.class);
