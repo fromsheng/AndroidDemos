@@ -27,6 +27,10 @@ import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -665,5 +669,28 @@ public class DeviceTool {
 		 * @param clickTimes 被点击次数
 		 */
 		public void onClickListener(View view, int clickTimes);
+	}
+	
+	/**
+	 * 控件跳动单次
+	 * @param view
+	 */
+	public static void shockView(View view) {
+		DebugTool.info("DeviceTool", "shockView");
+//		view.clearAnimation();
+		AnimationSet set = new AnimationSet(false);
+		TranslateAnimation transAnim = new TranslateAnimation(0, 2, 0, -5);
+        transAnim.setDuration(250);
+        transAnim.setRepeatCount(5);
+        transAnim.setRepeatMode(Animation.REVERSE);
+        
+        ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 1.1f, 1.0f, 1.2f, 0f, -1f);
+        scaleAnim.setDuration(250);
+        scaleAnim.setRepeatCount(5);
+        scaleAnim.setRepeatMode(Animation.REVERSE);
+        
+        set.addAnimation(transAnim);
+        set.addAnimation(scaleAnim);
+        view.startAnimation(set);
 	}
 }

@@ -31,6 +31,8 @@
         <activity android:name="com.artion.androiddemos.CroutonDemo" />
         <activity android:name="com.artion.androiddemos.TopPopupDemo" />
         <activity android:name="com.artion.androiddemos.LoadingDialogDemo" />
+        <activity android:name="com.artion.androiddemos.MainDemos" />
+        <activity android:name="com.artion.androiddemos.AnimationDemo" />
         
         <activity
             android:name="com.artion.androiddemos.MainActivity"
