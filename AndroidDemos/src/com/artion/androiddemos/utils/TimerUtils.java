@@ -17,6 +17,29 @@ public class TimerUtils {
 		mHandler = new Handler();
 	}
 	
+	public void startTimer(final long delay, final  TimerListener mListener, final int repeatCount) {
+		startTimer(delay, new TimerListener() {
+			int count = 0;
+			@Override
+			public void timeOnTick(long seconds) {
+				if(mListener != null) {
+					mListener.timeOnTick(seconds);
+				}
+			}
+			
+			@Override
+			public void timeOnFinish() {
+				if(mListener != null) {
+					mListener.timeOnFinish();
+				}
+				count ++;
+				if(count < repeatCount) {
+					startTimer(delay, mListener, repeatCount - count);
+				}
+			}
+		});
+	}
+	
 	
 	/**
 	 * 需要在ui线程中启动

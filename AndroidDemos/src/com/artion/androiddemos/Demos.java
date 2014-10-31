@@ -37,6 +37,7 @@ public class Demos extends BaseActivity {
 		actNames.add("TopPopupDemo");
 		actNames.add("LoadingDialogDemo");
 		actNames.add("MainDemos");
+		actNames.add("AnimationDemo");
 	}
 
 	@Override
