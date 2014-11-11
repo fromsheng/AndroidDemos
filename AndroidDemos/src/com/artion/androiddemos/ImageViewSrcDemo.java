@@ -3,10 +3,16 @@ package com.artion.androiddemos;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.artion.androiddemos.utils.DebugTool;
-
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+
+import com.artion.androiddemos.utils.DebugTool;
+import com.artion.androiddemos.utils.DeviceTool;
 
 public class ImageViewSrcDemo extends BaseActivity {
 
@@ -34,7 +40,27 @@ public class ImageViewSrcDemo extends BaseActivity {
 		
 		iv = (ImageView) findViewById(R.id.iv);
 		
+		findViewById(R.id.button1).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				DeviceTool.recycleDrawable(iv);
+			}
+		});
+		
+//		iv.setBackgroundResource(R.drawable.customer_introduction1);
 		iv.setImageResource(R.drawable.customer_introduction1);
+//		Drawable drawable = getResources().getDrawable(R.drawable.customer_introduction1);
+//		BitmapDrawable bd = ((BitmapDrawable) drawable);
+//		if(bd != null) {
+//			bd.setCallback(iv);
+//			Bitmap bm = bd.getBitmap();
+//			
+//			if(bm != null) {
+//				System.out.println("bm.isRecycled() == " + bm.isRecycled());
+//			}
+//		}
+//		iv.setImageDrawable(drawable);
 		
 		String url = "http://www.baidu.com百度";
 		Matcher urlMatcher = URL_PATTERN.matcher(url);
@@ -55,24 +81,26 @@ public class ImageViewSrcDemo extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		
-		if(iv != null) {
-			DebugTool.info(tag, "iv != null");
-			if(iv.getBackground() != null) {
-				DebugTool.info(tag, "iv.getBackground() != null");
-				iv.getBackground().setCallback(null);
-			}else {
-				DebugTool.info(tag, "iv.getBackground() == null");
-			}
-			
-			if(iv.getDrawable() != null) {
-				DebugTool.info(tag, "iv.getDrawable() != null");
-//				iv.setBackgroundDrawable(null);
-			}else {
-				DebugTool.info(tag, "iv.getDrawable() == null");
-			}
-		}else {
-			DebugTool.info(tag, "iv == null");
-		}
+//		if(iv != null) {
+//			DebugTool.info(tag, "iv != null");
+//			if(iv.getBackground() != null) {
+//				DebugTool.info(tag, "iv.getBackground() != null");
+//				iv.getBackground().setCallback(null);
+//			}else {
+//				DebugTool.info(tag, "iv.getBackground() == null");
+//			}
+//			
+//			if(iv.getDrawable() != null) {
+//				DebugTool.info(tag, "iv.getDrawable() != null");
+////				iv.setBackgroundDrawable(null);
+//			}else {
+//				DebugTool.info(tag, "iv.getDrawable() == null");
+//			}
+//		}else {
+//			DebugTool.info(tag, "iv == null");
+//		}
+		
+		DeviceTool.recycleDrawable(iv);
 	}
 
 }

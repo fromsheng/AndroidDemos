@@ -16,6 +16,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -33,6 +36,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 /**
  * 设备相关操作工具类.
@@ -692,5 +696,40 @@ public class DeviceTool {
         set.addAnimation(transAnim);
         set.addAnimation(scaleAnim);
         view.startAnimation(set);
+	}
+	
+	public static void recycleDrawable(Drawable drawable) {
+		if(drawable == null) {
+			return;
+		}
+		
+		drawable.setCallback(null);
+		
+		BitmapDrawable db = (BitmapDrawable) drawable;
+		if(db != null) {
+			db.setCallback(null);
+//			Bitmap bm = db.getBitmap();
+//			if(bm != null && !bm.isRecycled()) {
+//				bm.recycle();
+//				bm = null;
+//			}
+		}
+	}
+	
+	/**
+	 * 回收控件的背景资源
+	 * @param view
+	 */
+	public static void recycleDrawable(View view) {
+		if(view == null) {
+			return;
+		}
+		
+		recycleDrawable(view.getBackground());
+		
+		if(view instanceof ImageView) {
+			recycleDrawable(((ImageView) view).getDrawable());
+			
+		}
 	}
 }
