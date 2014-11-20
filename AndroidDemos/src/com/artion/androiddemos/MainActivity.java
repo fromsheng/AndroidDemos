@@ -13,6 +13,8 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.artion.androiddemos.dialog.KdAlertBuilder;
 import com.artion.androiddemos.dialog.KdAlertBuilder.KdAlertItemListener;
@@ -183,11 +185,18 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
 				
 				@Override
-				public void onClickListener(View view, int clickTimes) {
+				public void onClicked(View view, int clickTimes) {
 					if(clickTimes == 5) {
 						ToastUtils.showMessage(MainActivity.this, "好看哦");
 					} else {
 						ToastUtils.showMessage(MainActivity.this, "你点击次数为：" + clickTimes);
+					}
+				}
+
+				@Override
+				public void onClicking(View view, int clickTimes) {
+					if(view instanceof TextView) {
+						((TextView) view).setText("Click=" + clickTimes);
 					}
 				}
 			});

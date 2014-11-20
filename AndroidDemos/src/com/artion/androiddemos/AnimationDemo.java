@@ -8,6 +8,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.artion.androiddemos.utils.DeviceTool;
 import com.artion.androiddemos.utils.TimerUtils;
@@ -55,8 +56,15 @@ public class AnimationDemo extends BaseActivity {
 				DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
 					
 					@Override
-					public void onClickListener(View view, int clickTimes) {
+					public void onClicked(View view, int clickTimes) {
 						ToastUtils.showMessage(mAct, "clickTimes == " + clickTimes);
+					}
+
+					@Override
+					public void onClicking(View view, int clickTimes) {
+						if(view instanceof TextView) {
+							((TextView) view).setText("Click=" + clickTimes);
+						}
 					}
 				});
 			}
@@ -77,7 +85,6 @@ public class AnimationDemo extends BaseActivity {
 					@Override
 					public void timeOnFinish() {
 						DeviceTool.shockView(btn1);
-						ToastUtils.showMessage(mAct, "timeOnFinish == ");
 					}
 				}, 5);
 		        

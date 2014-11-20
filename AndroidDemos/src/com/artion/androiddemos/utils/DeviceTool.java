@@ -641,6 +641,9 @@ public class DeviceTool {
 		
 		view.setTag(TAG_ID_CLICKTIMES, ++ count1);
 		
+		if(listener != null) {
+			listener.onClicking(view, count1);
+		}
 		
 		timer.startTimer(DIFF_TIME, new TimerListener() {
 			
@@ -652,7 +655,7 @@ public class DeviceTool {
 			public void timeOnFinish() {
 				DebugTool.info("DeviceTool", "onViewClickTimes + " + (Integer) view.getTag(TAG_ID_CLICKTIMES));
 				if(listener != null) {
-					listener.onClickListener(view, (Integer) view.getTag(TAG_ID_CLICKTIMES));
+					listener.onClicked(view, (Integer) view.getTag(TAG_ID_CLICKTIMES));
 				}
 				
 				view.setTag(TAG_ID_CLICKTIMES, Integer.valueOf(0));
@@ -668,11 +671,17 @@ public class DeviceTool {
 	 */
 	public interface OnViewClickListener {
 		/**
-		 * 点击响应
+		 * 点击结束后响应
 		 * @param view
 		 * @param clickTimes 被点击次数
 		 */
-		public void onClickListener(View view, int clickTimes);
+		public void onClicked(View view, int clickTimes);
+		/**
+		 * 点击过程中响应
+		 * @param view
+		 * @param clickTimes 被点击次数
+		 */
+		public void onClicking(View view, int clickTimes);
 	}
 	
 	/**
