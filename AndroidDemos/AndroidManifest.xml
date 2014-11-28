@@ -33,6 +33,8 @@
         <activity android:name="com.artion.androiddemos.LoadingDialogDemo" />
         <activity android:name="com.artion.androiddemos.MainDemos" />
         <activity android:name="com.artion.androiddemos.AnimationDemo" />
+        <activity android:name="com.artion.androiddemos.StartDoDemo" />
+        <activity android:name="com.artion.androiddemos.MyDrawViewAct" />
         
         <activity
             android:name="com.artion.androiddemos.MainActivity"

@@ -38,6 +38,8 @@ public class Demos extends BaseActivity {
 		actNames.add("LoadingDialogDemo");
 		actNames.add("MainDemos");
 		actNames.add("AnimationDemo");
+		actNames.add("StartDoDemo");
+		actNames.add("MyDrawViewAct");
 	}
 
 	@Override

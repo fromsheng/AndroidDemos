@@ -150,4 +150,15 @@ public class ActivityIntentTools {
 //			ToastUtils.showMessage(context, "当前无可用浏览器");
 //		}
 //	}
+	
+	public static void gotoTargetActivityByScheme(Context context, String uri) {
+		if(uri == null) {
+			return;
+		}
+		Intent intent = new Intent();  
+		intent.setAction("android.intent.action.VIEW");  
+		intent.addCategory("android.intent.category.DEFAULT");
+		intent.setData(Uri.parse(uri));  //匹配了text/*  
+		context.startActivity(intent);      //此方法中调用intent.addCategory("android.intent.category.DEFAULT");
+	}
 }
