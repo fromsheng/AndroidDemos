@@ -1,6 +1,5 @@
-package com.artion.androiddemos.utils;
+package com.artion.androiddemos.common;
 
-import ch.boye.httpclientandroidlib.util.ExceptionUtils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
