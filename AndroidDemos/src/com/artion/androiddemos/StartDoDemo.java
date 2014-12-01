@@ -1,8 +1,8 @@
 package com.artion.androiddemos;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DeviceTool;
-import com.artion.androiddemos.utils.ToastUtils;
 import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
 
 import android.os.Bundle;

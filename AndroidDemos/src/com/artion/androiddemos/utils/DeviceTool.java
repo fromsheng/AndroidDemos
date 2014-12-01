@@ -7,7 +7,9 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 import com.artion.androiddemos.R;
-import com.artion.androiddemos.utils.TimerUtils.TimerListener;
+import com.artion.androiddemos.common.TimerUtils;
+import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.common.TimerUtils.TimerListener;
 
 import android.Manifest;
 import android.app.Activity;

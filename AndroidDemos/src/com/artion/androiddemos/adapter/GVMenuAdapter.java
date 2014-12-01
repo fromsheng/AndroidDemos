@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.artion.androiddemos.R;
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DebugTool;
 import com.artion.androiddemos.utils.FileSaveManager;
-import com.artion.androiddemos.utils.ToastUtils;
 import com.artion.androiddemos.view.BadgeView;
 import com.artion.androiddemos.view.MutilClickGesture;
 import com.artion.androiddemos.view.MutilClickGesture.ClickEvent;

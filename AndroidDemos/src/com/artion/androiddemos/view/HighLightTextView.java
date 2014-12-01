@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 import com.artion.androiddemos.ImageViewSrcDemo;
 import com.artion.androiddemos.MainActivity;
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.ActivityIntentTools;
-import com.artion.androiddemos.utils.ToastUtils;
 
 import android.content.Context;
 import android.graphics.Color;

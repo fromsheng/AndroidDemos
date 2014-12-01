@@ -18,7 +18,7 @@ import android.widget.PopupWindow.OnDismissListener;
 
 import com.artion.androiddemos.R;
 import com.artion.androiddemos.adapter.ViewPopupWindowAdapter;
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 
 public class PopupWindowManager {
 	

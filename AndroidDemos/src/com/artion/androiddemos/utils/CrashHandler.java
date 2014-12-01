@@ -15,6 +15,7 @@ import java.util.Map;
 
 import com.artion.androiddemos.BaseApplication;
 import com.artion.androiddemos.MainActivity;
+import com.artion.androiddemos.common.ToastUtils;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;

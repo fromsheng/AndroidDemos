@@ -10,11 +10,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.artion.androiddemos.common.TimerUtils;
+import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.common.TimerUtils.TimerListener;
 import com.artion.androiddemos.utils.DeviceTool;
-import com.artion.androiddemos.utils.TimerUtils;
 import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
-import com.artion.androiddemos.utils.TimerUtils.TimerListener;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class AnimationDemo extends BaseActivity {
 	

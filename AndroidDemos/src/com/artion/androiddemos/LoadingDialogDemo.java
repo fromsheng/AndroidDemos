@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.LoadingDialog;
 import com.artion.androiddemos.utils.LoadingDialog.ProgressListener;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class LoadingDialogDemo extends BaseActivity {
 	

@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.artion.androiddemos.R;
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 
 public class MyDrawView extends View implements OnClickListener {
 	

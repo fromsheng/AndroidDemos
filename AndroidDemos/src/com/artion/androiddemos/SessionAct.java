@@ -10,8 +10,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.artion.androiddemos.adapter.SessionAdapter;
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.domain.SessionItem;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class SessionAct extends BaseActivity {
 	

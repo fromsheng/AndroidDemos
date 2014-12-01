@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.dialog.KdAlertBuilder;
 import com.artion.androiddemos.dialog.KdAlertBuilder.KdAlertItemListener;
 import com.artion.androiddemos.highlight.HighLightTextViewDemo;
@@ -23,7 +24,6 @@ import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DebugTool;
 import com.artion.androiddemos.utils.DeviceTool;
 import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class MainActivity extends BaseActivity implements OnClickListener{
 

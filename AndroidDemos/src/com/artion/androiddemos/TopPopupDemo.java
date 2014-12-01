@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.view.BasePopupWindowManager;
 import com.artion.androiddemos.view.BasePopupWindowManager.LifecycleListener;
 import com.artion.androiddemos.view.BasePopupWindowManager.POSITION;

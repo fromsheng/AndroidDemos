@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.artion.androiddemos.R;
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 
 public class TopPopupWindowManager extends BasePopupWindowManager {
 

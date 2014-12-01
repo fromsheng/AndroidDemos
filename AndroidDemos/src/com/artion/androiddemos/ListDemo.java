@@ -16,8 +16,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DebugTool;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class ListDemo extends ListActivity {
 	

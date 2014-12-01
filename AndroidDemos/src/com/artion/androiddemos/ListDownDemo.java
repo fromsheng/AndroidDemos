@@ -16,8 +16,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DebugTool;
-import com.artion.androiddemos.utils.ToastUtils;
 
 public class ListDownDemo extends BaseActivity {
 	

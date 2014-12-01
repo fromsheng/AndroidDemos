@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.view.MultiImageView;
 import com.artion.androiddemos.view.MultiImageView.ItemClickLister;
 

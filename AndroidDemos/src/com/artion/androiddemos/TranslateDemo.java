@@ -1,6 +1,6 @@
 package com.artion.androiddemos;
 
-import com.artion.androiddemos.utils.ToastUtils;
+import com.artion.androiddemos.common.ToastUtils;
 
 import android.os.Bundle;
 import android.view.View;
