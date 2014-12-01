@@ -3,7 +3,6 @@ package com.artion.androiddemos;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -13,17 +12,16 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.common.ViewUtils;
+import com.artion.androiddemos.common.ViewUtils.OnViewClickListener;
 import com.artion.androiddemos.dialog.KdAlertBuilder;
 import com.artion.androiddemos.dialog.KdAlertBuilder.KdAlertItemListener;
 import com.artion.androiddemos.highlight.HighLightTextViewDemo;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DebugTool;
-import com.artion.androiddemos.utils.DeviceTool;
-import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
 
 public class MainActivity extends BaseActivity implements OnClickListener{
 
@@ -182,7 +180,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			
 			break;
 		case R.id.button10:
-			DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
+			ViewUtils.onViewClickTimes(v, 300, new OnViewClickListener() {
 				
 				@Override
 				public void onClicked(View view, int clickTimes) {

@@ -3,18 +3,14 @@ package com.artion.androiddemos;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.artion.androiddemos.common.TimerUtils;
-import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.common.TimerUtils.TimerListener;
-import com.artion.androiddemos.utils.DeviceTool;
-import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
+import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.common.ViewUtils;
+import com.artion.androiddemos.common.ViewUtils.OnViewClickListener;
 
 public class AnimationDemo extends BaseActivity {
 	
@@ -53,7 +49,7 @@ public class AnimationDemo extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
+				ViewUtils.onViewClickTimes(v, 300, new OnViewClickListener() {
 					
 					@Override
 					public void onClicked(View view, int clickTimes) {
@@ -84,7 +80,7 @@ public class AnimationDemo extends BaseActivity {
 					
 					@Override
 					public void timeOnFinish() {
-						DeviceTool.shockView(btn1);
+						ViewUtils.shockView(btn1);
 					}
 				}, 5);
 		        
@@ -96,7 +92,7 @@ public class AnimationDemo extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				btn1.clearAnimation();
-				DeviceTool.shockView(btn1);
+				ViewUtils.shockView(btn1);
 			}
 		});
 	}

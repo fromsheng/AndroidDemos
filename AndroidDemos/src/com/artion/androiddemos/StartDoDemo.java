@@ -1,15 +1,15 @@
 package com.artion.androiddemos;
 
-import com.artion.androiddemos.common.ToastUtils;
-import com.artion.androiddemos.utils.ActivityIntentTools;
-import com.artion.androiddemos.utils.DeviceTool;
-import com.artion.androiddemos.utils.DeviceTool.OnViewClickListener;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.common.ViewUtils;
+import com.artion.androiddemos.common.ViewUtils.OnViewClickListener;
+import com.artion.androiddemos.utils.ActivityIntentTools;
 
 public class StartDoDemo extends BaseActivity {
 
@@ -49,7 +49,7 @@ public class StartDoDemo extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				
-				DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
+				ViewUtils.onViewClickTimes(v, 300, new OnViewClickListener() {
 					
 					@Override
 					public void onClicked(View view, int clickTimes) {
@@ -89,7 +89,7 @@ public class StartDoDemo extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
+				ViewUtils.onViewClickTimes(v, 300, new OnViewClickListener() {
 					
 					@Override
 					public void onClicked(View view, int clickTimes) {
@@ -130,7 +130,7 @@ public class StartDoDemo extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				
-				DeviceTool.onViewClickTimes(v, 300, new OnViewClickListener() {
+				ViewUtils.onViewClickTimes(v, 300, new OnViewClickListener() {
 					
 					@Override
 					public void onClicked(View view, int clickTimes) {
