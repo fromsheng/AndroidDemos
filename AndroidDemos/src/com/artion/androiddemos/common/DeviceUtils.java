@@ -13,6 +13,8 @@ import java.util.UUID;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Instrumentation;
+import android.app.Service;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +30,8 @@ import android.os.StatFs;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class DeviceUtils {
 	private static final String EXTERNAL_STORAGE_PERMISSION = "android.permission.WRITE_EXTERNAL_STORAGE";
@@ -479,5 +483,47 @@ public class DeviceUtils {
 			return 0;
 		}
 		return getAvailableMemorySize(path.getPath());
+	}
+	
+	public static void showSoftKeyboard(Context context, View view) {
+		InputMethodManager inputMethodManager = (InputMethodManager) context
+				.getSystemService(Service.INPUT_METHOD_SERVICE);
+		inputMethodManager.showSoftInput(view, 0);
+	}
+
+	/**
+	 * 隐藏软键盘
+	 * @param ct
+	 */
+	public static void hideInputManager(Context ct) {
+		try {
+			InputMethodManager imm = (InputMethodManager) ct
+					.getSystemService(Context.INPUT_METHOD_SERVICE);
+			if (!imm.isActive()) {
+				return;
+			}
+			((InputMethodManager) ct
+					.getSystemService(Context.INPUT_METHOD_SERVICE))
+					.hideSoftInputFromWindow(((Activity) ct).getCurrentFocus()
+							.getWindowToken(),
+							InputMethodManager.HIDE_NOT_ALWAYS);
+		} catch (Exception e) {
+		}
+	}
+	
+	/**
+	 * 模拟软键盘按键事件
+	 * @param KeyCode
+	 */
+	public static void simulateKey(final int KeyCode) {
+		new Thread() {
+			public void run() {
+				try {
+					Instrumentation inst = new Instrumentation();
+					inst.sendKeyDownUpSync(KeyCode);
+				} catch (Exception e) {
+				}
+			}
+		}.start();
 	}
 }
