@@ -1,5 +1,5 @@
 package com.artion.androiddemos.common;
 
-public class DataUtils {
+public class DateUtils {
 
 }
