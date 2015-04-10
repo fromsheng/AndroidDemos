@@ -54,11 +54,14 @@ public class StartDoDemo extends BaseActivity {
 					@Override
 					public void onClicked(View view, int clickTimes) {
 						String schemeUri = null;
-						if(clickTimes % 2 == 0) {
+						if(clickTimes % 3 == 0) {
 							schemeUri = "cloudhub://start?count=0";
-						} else {
-							schemeUri = "cloudhub://start?count=0&token=11";
-						}
+						} else if(clickTimes % 3 == 1) {
+							schemeUri = "cloudhub://start?count=0&token=90c95af05833a665dd736e43e8782070|29feece36ac1e3eb9e19beee6c6c9e4&networkId=383cee68-cea3-4818-87ae-24fb46e081b1";
+						} else if(clickTimes % 3 == 2) {
+//							schemeUri = "cloudhub://start?token=fcc0685ade65bdfec5f5398223fa3f9|245cdfa617a38612ab9aff9b98536ed3";
+							schemeUri = "cloudhub://start?token=90c95af05833a665dd736e43e8782070|29feece36ac1e3eb9e19beee6c6c9e4&networkId=383cee68-cea3-4818-87ae-24fb46e081b1";
+							}
 						try {
 							ActivityIntentTools.gotoTargetActivityByScheme(mAct,
 									schemeUri);
@@ -97,7 +100,7 @@ public class StartDoDemo extends BaseActivity {
 						if(clickTimes % 2 == 0) {
 							schemeUri = "cloudhub://share?appId=10101&appName=Do&shareType=3&title=yunzhijia&content=DO&webpageUrl=(schema)";
 						} else {
-							schemeUri = "cloudhub://share?appId=10101&appName=Do&shareType=3&title=yunzhijia&content=DO&webpageUrl=(schema)&token=?";
+							schemeUri = "cloudhub://share?appId=10101&appName=Do&shareType=3&title=yunzhijia&content=DO&webpageUrl=(schema)&token=fcc0685ade65bdfec5f5398223fa3f9|245cdfa617a38612ab9aff9b98536ed3";
 						}
 						try {
 							ActivityIntentTools.gotoTargetActivityByScheme(mAct,
@@ -138,7 +141,7 @@ public class StartDoDemo extends BaseActivity {
 						if(clickTimes % 2 == 0) {
 							schemeUri = "cloudhub://chat?userId=2f1cae89-eb8e-11e3-b562-648e9a59efa3";
 						} else {
-							schemeUri = "cloudhub://chat?userId=2f1cae89-eb8e-11e3-b562-648e9a59efa3&token=?";
+							schemeUri = "cloudhub://chat?userId=2f1cae89-eb8e-11e3-b562-648e9a59efa3&token=fcc0685ade65bdfec5f5398223fa3f9|245cdfa617a38612ab9aff9b98536ed3";
 						}
 						try {
 							ActivityIntentTools.gotoTargetActivityByScheme(mAct,
