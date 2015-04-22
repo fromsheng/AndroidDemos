@@ -5,7 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:targetSdkVersion="8" />
+        android:targetSdkVersion="8"
+        android:minSdkVersion="5" />
     
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
@@ -35,6 +36,8 @@
         <activity android:name="com.artion.androiddemos.AnimationDemo" />
         <activity android:name="com.artion.androiddemos.StartDoDemo" />
         <activity android:name="com.artion.androiddemos.MyDrawViewAct" />
+        <activity android:name="com.artion.androiddemos.EditTextDemo"
+            android:windowSoftInputMode="adjustResize" />
         
         <activity
             android:name="com.artion.androiddemos.MainActivity"

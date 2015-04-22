@@ -6,19 +6,14 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-import com.artion.androiddemos.R;
-import com.artion.androiddemos.common.TimerUtils;
-import com.artion.androiddemos.common.ToastUtils;
-import com.artion.androiddemos.common.TimerUtils.TimerListener;
-
 import android.Manifest;
 import android.app.Activity;
+import android.app.Instrumentation;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -31,14 +26,17 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Selection;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
+import android.view.View.OnTouchListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+
+import com.artion.androiddemos.R;
+import com.artion.androiddemos.common.ToastUtils;
 
 /**
  * 设备相关操作工具类.
@@ -606,5 +604,83 @@ public class DeviceTool {
 			recycleDrawable(((ImageView) view).getDrawable());
 			
 		}
+	}
+	
+	/**
+	 * 隐藏软键盘
+	 * @param ct
+	 */
+	public static void hideInputManager(Context ct) {
+		try {
+			InputMethodManager imm = (InputMethodManager) ct.getSystemService(Context.INPUT_METHOD_SERVICE);
+			if(!imm.isActive()){
+				return;
+			}
+			((InputMethodManager) ct.getSystemService(Context.INPUT_METHOD_SERVICE))
+			.hideSoftInputFromWindow(((Activity) ct).getCurrentFocus()
+					.getWindowToken(),
+					InputMethodManager.HIDE_NOT_ALWAYS);
+		} catch (Exception e) {
+		}
+	}
+	
+	/**
+	 * 打开软键盘
+	 * @param ct
+	 * @param v
+	 */
+	public static void showInputManager(Context ct,View v) {
+		try {
+			InputMethodManager imm = (InputMethodManager) ct.getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.showSoftInput(v, 0);
+		} catch (Exception e) {
+		}
+	}
+	
+	/**
+	 * 模拟软键盘按键事件
+	 * @param KeyCode
+	 */
+	public static void simulateKey(final int KeyCode) {
+		new Thread () { 
+			public void run () { 
+				try { 
+					Instrumentation inst=new Instrumentation(); 
+					inst.sendKeyDownUpSync(KeyCode);
+				} catch(Exception e) { 
+				} 
+			} 
+		}.start(); 
+	}
+	
+	/**
+	 * 设置ScrollView布局监听输入法弹出时滚至底部，暂时仅用去相对简单的EditText带底部按钮操作。注意所在的Activity必须是android:windowSoftInputMode="adjustResize"
+	 * @param scrollView
+	 */
+	public static void setSoftInputListener(final ScrollView scrollView) {
+		scrollView.getViewTreeObserver().addOnGlobalLayoutListener(
+				new OnGlobalLayoutListener() {
+					@Override
+					public void onGlobalLayout() {
+						int heightDiff = scrollView.getRootView()
+								.getHeight() - scrollView.getHeight();
+						if (heightDiff > 100) { // 如果高度差超过100像素，就很有可能是有软键盘...
+							scrollView.postDelayed(new Runnable() {
+								@Override
+								public void run() {
+									scrollView.fullScroll(View.FOCUS_DOWN);
+								}
+							}, 100);
+						}
+					}
+				});
+		
+		scrollView.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				hideInputManager(scrollView.getContext());
+				return false;
+			}
+		});
 	}
 }
