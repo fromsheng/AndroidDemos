@@ -41,6 +41,7 @@ public class Demos extends BaseActivity {
 		actNames.add("StartDoDemo");
 		actNames.add("MyDrawViewAct");
 		actNames.add("EditTextDemo");
+		actNames.add("ImageCompressDemo");
 	}
 
 	@Override

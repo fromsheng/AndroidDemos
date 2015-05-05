@@ -1,5 +1,7 @@
 package com.artion.androiddemos.common;
 
+import static android.os.Environment.MEDIA_MOUNTED;
+
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,9 +12,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+import android.text.TextUtils;
 
 /**
  * 文件相关常用操作类
@@ -25,6 +35,52 @@ public class FileUtils {
 	public static final String FILE_SIZE_MB = " MB";
 	public static final String FILE_SIZE_KB = " KB";
 	public static final String FILE_SIZE_B = " B";
+	
+	private static final String HASH_ALGORITHM = "MD5";
+	private static final int RADIX = 10 + 26;
+	
+	public static File getAppCacheDir(Context context) {
+		if(context == null) {
+			return null;
+		}
+		return StorageUtils.getCacheDirectory(context);
+	}
+	
+	public static String getImageCacheDir(Context context) {
+		File imageDir = getAppCacheDirByTypeChild(context, ".image");
+		if(imageDir != null) {
+			return imageDir.getAbsolutePath() + File.separator;
+		}
+		return null;
+	}
+	
+	public static File getAppCacheDirByTypeChild(Context context, String typeDirName) {
+		File rootDir = getAppCacheDir(context);
+		if(rootDir == null) {
+			return null;
+		}
+		
+		if(TextUtils.isEmpty(typeDirName)) {
+			return rootDir;
+		}
+		
+		File file =  new File(rootDir, typeDirName);
+		if(!file.exists()) {
+			if(!file.mkdirs()) {
+				return rootDir;
+			}
+		}
+		return file;
+	}
+	
+	public static boolean isSDReady(Context context) {
+		return MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && hasExternalStoragePermission(context);
+	}
+	
+	private static boolean hasExternalStoragePermission(Context context) {
+		int perm = context.checkCallingOrSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+		return perm == PackageManager.PERMISSION_GRANTED;
+	}
 	
 	public static boolean checkMkdirs(String filePath) {
 		if(filePath == null) {
@@ -104,6 +160,44 @@ public class FileUtils {
 			size += dir.length();
 		}
 		return size;
+	}
+	
+	public static String getMD5Hash(String url) {
+		byte[] md5 = getMD5(url.getBytes());
+		BigInteger bi = new BigInteger(md5).abs();
+		return bi.toString(RADIX);
+	}
+	
+	public static byte[] getMD5(byte[] data) {
+		byte[] hash = null;
+		try {
+			MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
+			digest.update(data);
+			hash = digest.digest();
+		} catch (NoSuchAlgorithmException e) {
+//			e.printStackTrace();
+		}
+		return hash;
+	}
+	
+	public static boolean copyFile(File srcFile, File destFile) {
+		try {
+			org.apache.commons.io.FileUtils.copyFile(srcFile, destFile);
+			return true;
+		} catch (IOException e) {
+//			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public static boolean moveFile(File srcFile, File destFile) {
+		try {
+			org.apache.commons.io.FileUtils.moveFile(srcFile, destFile);
+			return true;
+		} catch (IOException e) {
+//			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	/*************************************************************************************/

@@ -8,6 +8,8 @@ import java.util.List;
 import android.app.Activity;
 import android.app.Application;
 
+import com.artion.androiddemos.common.AndroidUtils;
+import com.artion.androiddemos.common.ImageUtils;
 import com.artion.androiddemos.utils.DebugTool;
 
 public class BaseApplication extends Application {
@@ -17,7 +19,10 @@ public class BaseApplication extends Application {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		instance = this;
+		AndroidUtils.regAppContext(this);
 //		CrashHandler.getInstance().init(getApplicationContext());  
+		
+		ImageUtils.initImageLoader(this);
 	}
 	
 	private static BaseApplication instance;
