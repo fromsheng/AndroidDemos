@@ -3,16 +3,22 @@ package com.artion.androiddemos;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 import android.widget.ScrollView;
 
+import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DeviceTool;
 import com.artion.androiddemos.view.ResizeLayout;
 import com.artion.androiddemos.view.ResizeLayout.OnResizeListener;
 
 public class EditTextDemo extends BaseActivity {
 	private ScrollView scroll;
+	private EditText edit;
 	private static final int BIGGER = 1; 
 	private static final int SMALLER = 2; 
 	private static final int MSG_RESIZE = 1; 
@@ -32,6 +38,7 @@ public class EditTextDemo extends BaseActivity {
 	@Override
 	protected void initLayout() {
 		super.initLayout();
+		edit = (EditText) findViewById(R.id.edit);
 		scroll = (ScrollView) findViewById(R.id.scrollview);
 		((ResizeLayout) findViewById(R.id.resize_layout)).setOnResizeListener(new OnResizeListener() {
 
@@ -56,6 +63,33 @@ public class EditTextDemo extends BaseActivity {
 //		listenerSoftInput();
 		
 		DeviceTool.setSoftInputListener(scroll);
+		
+		findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ToastUtils.showMessage(mAct, DeviceTool.getEditInputTextWithoutSeparator(edit));
+			}
+		});
+		
+		edit.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				DeviceTool.setEditInputPhoneSeparator(edit);
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				
+			}
+		});
 	}
 	
 	private void listenerSoftInput() {

@@ -683,4 +683,125 @@ public class DeviceTool {
 			}
 		});
 	}
+	
+	public static final char SEPARATOR = ' ';  
+	public static final int FIRST_SEPARATOR_POSITION = 3;  
+	public static final int SECOND_SEPARATOR_POSITION = 7;  
+	/* 
+     * -1. Invalid. 
+     *  
+     * 0. Formatted. 
+     *  
+     * 1. Not formatted cause one index at least is a separator, except index 3 
+     * and index 7. 
+     *  
+     * 2. Not formatted cause index 3 isn't a separator. 
+     *  
+     * 3. Not formatted cause index 7 isn't a separator. 
+     *  
+     * 4. Not formatted cause has a separator in the tail. 
+     */  
+    public static int parsePhoneNumber(String phoneNumber) {  
+        if (phoneNumber == null) {  
+            return -1;  
+        }  
+  
+        if (getOneInvalidSeparatorIndex(phoneNumber) != -1) {//除index = 3和8是“-”以外，其他位置有“-”时，按1处理  
+            return 1;  
+        }  
+  
+        if ((phoneNumber.length() > FIRST_SEPARATOR_POSITION)//字符数超3个，同时index=3的字符不是“-”，则按2来处理  
+                && (phoneNumber.charAt(FIRST_SEPARATOR_POSITION) != SEPARATOR)) {  
+            return 2;  
+        }  
+        if ((phoneNumber.length() > (SECOND_SEPARATOR_POSITION + 1))//字符数超8个，同时index=8的字符不是“-”，则按3来处理  
+                && (phoneNumber.charAt(SECOND_SEPARATOR_POSITION + 1) != SEPARATOR)) {  
+            return 3;  
+        }  
+  
+      if ((phoneNumber.length() == (FIRST_SEPARATOR_POSITION + 1))  
+              || (phoneNumber.length() == (SECOND_SEPARATOR_POSITION + 1 + 1))) {  
+          return 4;  
+      }  
+        if(phoneNumber.length()>13)//超过长度，按4处理  
+        {  
+            return 4;  
+        }  
+  
+        return 0;  
+    }  
+  
+    /** 
+     * 除index = 3和8是“-”以外，其他位置有“-”时，返回该index 
+     * @param phoneNumber 
+     * @return 
+     */  
+      
+    public static int getOneInvalidSeparatorIndex(String phoneNumber) {  
+        if (phoneNumber == null) {  
+            return -1;  
+        }  
+  
+        for (int index = 0; index < phoneNumber.length(); index++) {  
+            if ((index == FIRST_SEPARATOR_POSITION) || (index == (SECOND_SEPARATOR_POSITION + 1))) {  
+                continue;  
+            }  
+  
+            if (phoneNumber.charAt(index) == SEPARATOR) {  
+                return index;  
+            }  
+        }  
+  
+        return -1;  
+    } 
+    
+    /**
+     * 设置EditText输入手机号时分隔处理，方法用在onTextChanged中
+     * @param edit
+     */
+    public static void setEditInputPhoneSeparator(EditText edit) {
+    	if(edit == null) {
+    		return;
+    	}
+    	
+    	Editable phoneNumberEditable = edit.getEditableText();  
+		  
+//        if (before == 1) {  
+//            if ((start == DeviceTool.FIRST_SEPARATOR_POSITION) || (start == (DeviceTool.SECOND_SEPARATOR_POSITION + 1))) {  
+//                return;  
+//            }  
+//        }  
+  
+        switch (parsePhoneNumber(phoneNumberEditable.toString())) {  
+        case 1:  
+            int oneInvalidSeparatorIndex = getOneInvalidSeparatorIndex(phoneNumberEditable.toString());  
+            phoneNumberEditable.delete(oneInvalidSeparatorIndex, oneInvalidSeparatorIndex + 1);//删除该“-”  
+            break;  
+  
+        case 2:  
+            phoneNumberEditable.insert(FIRST_SEPARATOR_POSITION, String.valueOf(SEPARATOR));  
+            break;  
+  
+        case 3:  
+            phoneNumberEditable.insert(SECOND_SEPARATOR_POSITION + 1, String.valueOf(SEPARATOR));  
+            break;  
+  
+        case 4:  
+            phoneNumberEditable.delete(phoneNumberEditable.length() - 1, phoneNumberEditable.length());  
+            break;  
+  
+        case -1:  
+        case 0:  
+        default:  
+            break;  
+        }  
+    }
+    
+    public static String getEditInputTextWithoutSeparator(EditText edit) {
+    	if(edit == null) {
+    		return null;
+    	}
+    	
+    	return edit.getText().toString().replaceAll(String.valueOf(SEPARATOR), "");
+    }
 }
