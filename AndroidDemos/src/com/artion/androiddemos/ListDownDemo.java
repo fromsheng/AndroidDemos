@@ -1,5 +1,6 @@
 package com.artion.androiddemos;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -8,7 +9,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -38,6 +41,8 @@ public class ListDownDemo extends BaseActivity {
 	private Animation pushDown, pushUp;
 	private Animation alphaIn, alphaOut;
 
+	private static int lastPos, firstTop;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -53,11 +58,29 @@ public class ListDownDemo extends BaseActivity {
 	protected void initLayout() {
 		// TODO Auto-generated method stub
 		super.initLayout();
-		
 		btn = (Button) findViewById(R.id.btn);
 		tv = (TextView) findViewById(R.id.tv);
 		lv = (ListView) findViewById(R.id.listview);
 		ll = (LinearLayout) findViewById(R.id.ll_out);
+		
+		lv.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				// 不滚动时保存当前滚动到的位置  
+		        if (scrollState == OnScrollListener.SCROLL_STATE_IDLE) { 
+		        	lastPos = lv.getFirstVisiblePosition();
+		        	View firstView = lv.getChildAt(0);
+		        	firstTop = (firstView == null) ? 0 : firstView.getTop();
+		        } 
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				
+			}
+		});
 		
 		lv.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrays));
 		
@@ -70,6 +93,7 @@ public class ListDownDemo extends BaseActivity {
 		ll.setVisibility(View.GONE);
 		
 //		startTranslate(tv, 0, -100, View.GONE);//如需tv也跟着走解注释
+		lv.setSelectionFromTop(lastPos, firstTop);
 	}
 
 	@Override
