@@ -20,6 +20,7 @@
             android:id="@+id/edit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/bg_edittext_cursor"
             android:inputType="phone"
             android:digits="1234567890 "
             android:hint="xxx" />

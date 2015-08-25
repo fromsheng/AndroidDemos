@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.artion.androiddemos.R;
 import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DebugTool;
+import com.artion.androiddemos.utils.DeviceTool;
 import com.artion.androiddemos.utils.FileSaveManager;
 import com.artion.androiddemos.view.BadgeView;
 import com.artion.androiddemos.view.MutilClickGesture;
@@ -124,7 +125,7 @@ public class GVMenuAdapter extends BaseAdapter {
 		TextView text = (TextView) convertView.findViewById(R.id.footer_menu_item_text);
 		icon.setImageResource(item.itemSelected ? item.iconDownRid : item.iconNormalRid);
 		text.setText(item.itemStrRid);
-		
+		DeviceTool.setImageTouchDark(icon);
 		View layout = convertView.findViewById(R.id.footer_menu_item_ll_details);
 		BadgeView badgeView = (BadgeView) layout.getTag();
 		if(badgeView == null) {

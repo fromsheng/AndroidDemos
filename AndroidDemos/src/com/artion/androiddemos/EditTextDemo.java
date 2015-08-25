@@ -39,6 +39,7 @@ public class EditTextDemo extends BaseActivity {
 	protected void initLayout() {
 		super.initLayout();
 		edit = (EditText) findViewById(R.id.edit);
+		edit.setHint(DeviceTool.getSpannedStrWithTextSize("123456", 8));
 		scroll = (ScrollView) findViewById(R.id.scrollview);
 		((ResizeLayout) findViewById(R.id.resize_layout)).setOnResizeListener(new OnResizeListener() {
 

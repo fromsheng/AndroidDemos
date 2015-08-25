@@ -40,6 +40,8 @@
         <activity android:name="com.artion.androiddemos.EditTextDemo"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.artion.androiddemos.ImageCompressDemo" />
+        <activity android:name="com.artion.androiddemos.MoveViewDemo" />
+        <activity android:name="com.artion.androiddemos.ImagePressedDemo" />
         
         
         <activity

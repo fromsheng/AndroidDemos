@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -26,6 +27,10 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Selection;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.SpannedString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -684,6 +689,53 @@ public class DeviceTool {
 		});
 	}
 	
+	/**
+	 * @param imageView
+	 * 设置imageView按下时变暗效果
+	 */
+	public static void setImageTouchDark(ImageView imageView) {
+		if(imageView == null) {
+			return;
+		}
+		
+		imageView.setOnTouchListener(new OnTouchListener() {
+			 public final float[] BT_SELECTED = new float[] { 
+					 1, 0, 0, 0, -50,
+					 0, 1, 0, 0, -50,
+					 0, 0, 1, 0, -50,
+					 0, 0, 0, 1, 0 };  
+		        public final float[] BT_NOT_SELECTED = new float[] {
+		        		1, 0, 0, 0, 0,
+		        		0, 1, 0, 0, 0,
+		        		0, 0, 1, 0, 0,
+		        		0, 0, 0, 1, 0 };  
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {  
+	                if(v instanceof ImageView){  
+	                    ImageView iv = (ImageView) v;  
+	                    iv.setDrawingCacheEnabled(true);   
+	                      
+	                    iv.setColorFilter( new ColorMatrixColorFilter(BT_SELECTED) ) ;   
+	                }else{  
+	                    v.getBackground().setColorFilter( new ColorMatrixColorFilter(BT_SELECTED) );  
+	                    v.setBackgroundDrawable(v.getBackground());  
+	                }  
+	            } else if (event.getAction() == MotionEvent.ACTION_UP) {  
+	                if(v instanceof ImageView){  
+	                    ImageView iv = (ImageView) v;   
+	                    iv.setColorFilter( new ColorMatrixColorFilter(BT_NOT_SELECTED) ) ;   
+	                }else{  
+	                    v.getBackground().setColorFilter(  
+	                            new ColorMatrixColorFilter(BT_NOT_SELECTED));  
+	                    v.setBackgroundDrawable(v.getBackground());  
+	                }  
+	            }  
+				return false;
+			}
+		});
+	}
+	
 	public static final char SEPARATOR = ' ';  
 	public static final int FIRST_SEPARATOR_POSITION = 3;  
 	public static final int SECOND_SEPARATOR_POSITION = 7;  
@@ -803,5 +855,21 @@ public class DeviceTool {
     	}
     	
     	return edit.getText().toString().replaceAll(String.valueOf(SEPARATOR), "");
+    }
+    
+    /** 设置字体大小的SpannedString,源于需要设置EditText的hint的字体大小独立
+     * @param text
+     * @param textSizeInDp
+     * @return
+     */
+    public static SpannedString getSpannedStrWithTextSize(String text, int textSizeInDp) {
+    	if(text == null) {
+    		return null;
+    	}
+    	
+    	SpannableString ss = new SpannableString(text);
+    	AbsoluteSizeSpan ass = new AbsoluteSizeSpan(textSizeInDp, true);
+    	ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    	return new SpannedString(ss);
     }
 }
