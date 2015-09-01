@@ -17,6 +17,22 @@ import android.text.style.ForegroundColorSpan;
  * 
  */
 public class VerifyTools {
+	/**
+	 * 针对TextView显示中文中出现的排版错乱问题，通过调用此方法得以解决
+	 * @param input
+	 * @return 返回全部为全角字符的字符串
+	 */
+	public static String toSBC(String input) { 
+        char c[] = input.toCharArray(); 
+        for (int i = 0; i < c.length; i++) { 
+            if (c[i] == ' ') { 
+                c[i] = '\u3000'; 
+            } else if (c[i] < '\177') { 
+                c[i] = (char) (c[i] + 65248); 
+            } 
+        } 
+        return new String(c); 
+    } 
 	
 	public static String getHtmlHighLightStr(String source, String pattern, int highLightColor) {
       String cen = "<font color='" + highLightColor + "'>" + pattern + "</font>";

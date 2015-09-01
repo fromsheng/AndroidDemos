@@ -24,5 +24,12 @@
 	    android:text="abcdefghijklmnopqrstuvwxyz"
 	    android:textColor="#333"
 	    android:textSize="18sp"/>
+	
+	<TextView android:id="@+id/tv4"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="abcdefghijklmnopqrstuvwxyz"
+	    android:textColor="#333"
+	    android:textSize="18sp"/>
     
 </LinearLayout>

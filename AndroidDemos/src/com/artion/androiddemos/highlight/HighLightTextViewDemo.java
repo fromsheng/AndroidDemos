@@ -17,7 +17,7 @@ import com.artion.androiddemos.view.HighLightTextView;
 
 public class HighLightTextViewDemo extends BaseActivity {
 
-	TextView tv, tv2;
+	TextView tv, tv2, tv4;
 	HighLightTextView tv3;
 	
 	@Override
@@ -40,6 +40,7 @@ public class HighLightTextViewDemo extends BaseActivity {
 		
 		tv = (TextView) findViewById(R.id.tv);
 		tv2 = (TextView) findViewById(R.id.tv2);
+		tv4 = (TextView) findViewById(R.id.tv4);
 		SpannableString s = new SpannableString("我们已发送验证码短信到你的手机上");
 	    
         Pattern p = Pattern.compile("验证码短信");
@@ -93,7 +94,8 @@ public class HighLightTextViewDemo extends BaseActivity {
         
         tv3 = (HighLightTextView) findViewById(R.id.tv3);
         
-        tv3.setText("#一生有你#我想对像说@蔡锦升 @康小林 这是一个百度地址：http://www.baidu.com", null, null);
+        tv3.setText("#2015一生有你#我想对像说@蔡锦升 @康小林 这是一个百度地址：http://www.baidu.com", null, null);
+        tv4.setText(VerifyTools.toSBC("#2015一生有你#我想对像说@蔡锦升 @康小林 这是一个百度地址：http://www.baidu.com"));
 	}
 
 	@Override
