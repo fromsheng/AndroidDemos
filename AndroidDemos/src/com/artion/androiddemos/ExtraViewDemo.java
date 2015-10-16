@@ -81,14 +81,12 @@ public class ExtraViewDemo extends BaseActivity {
 
 					@Override
 					public void onDisplay(View v) {
-						ToastUtils.showMessage(mAct, "onDisplay");
 					}
 
 					@Override
 					public void onDismiss(View v) {
-						ToastUtils.showMessage(mAct, "onDismiss");
 					}
-				}, ExtraViewUtils.EXTRA_VIEW_CANCEL_LEVEL_BACKABLE_OUTSIDE);
+				}, ExtraViewUtils.EXTRA_VIEW_CANCEL_LEVEL_BACKABLE, true);
 				
 				layoutText.setText(layoutText.getText().toString() + ".");
 			}

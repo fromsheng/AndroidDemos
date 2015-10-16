@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.artion.androiddemos.R;
@@ -43,8 +44,8 @@ public class ExtraViewUtils {
 	 * @return
 	 */
 	public static View initExtraView(Activity activity, View view, int layoutId, final ExtraViewListener listener,
-			final int extra_level) {
-		return initExtraView(activity, view, LayoutInflater.from(activity).inflate(layoutId, null), listener, extra_level);
+			final int extra_level, boolean ifOverlayTitleBar) {
+		return initExtraView(activity, view, LayoutInflater.from(activity).inflate(layoutId, null), listener, extra_level, ifOverlayTitleBar);
 
 	}
 	
@@ -58,7 +59,7 @@ public class ExtraViewUtils {
 	 * @return
 	 */
 	public static View initExtraView(Activity activity, View view, View layoutView, final ExtraViewListener listener,
-			final int extra_level) {
+			final int extra_level, boolean ifOverlayTitleBar) {
 		if(view == null) {
 			if(layoutView == null) {
 				layoutView = LayoutInflater.from(activity).inflate(R.layout.fag_extra_view, null);
@@ -69,7 +70,7 @@ public class ExtraViewUtils {
 					android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
 					android.widget.FrameLayout.LayoutParams.MATCH_PARENT);
 
-			params.gravity = Gravity.TOP;
+			params.gravity = Gravity.CENTER;
 
 			switch (extra_level) {
 			case EXTRA_VIEW_CANCEL_LEVEL_NONE:
@@ -93,7 +94,11 @@ public class ExtraViewUtils {
 			view.setTag(R.id.extra_view_listener, listener);
 			view.setTag(R.id.extra_view_cancel_level, extra_level);
 
-			activity.addContentView(view, params);
+			if(ifOverlayTitleBar) {
+				((ViewGroup) activity.getWindow().getDecorView()).addView(view, params);
+			} else {
+				activity.addContentView(view, params);
+			}
 			showExtraView(view);
 		}
 		return view;
@@ -109,8 +114,8 @@ public class ExtraViewUtils {
 	 * @return
 	 */
 	public static View initExtraView(Activity activity, View view, final ExtraViewListener listener,
-			final int extra_level) {
-		return initExtraView(activity, view, R.layout.fag_extra_view, listener, extra_level);
+			final int extra_level, boolean ifOverlayTitleBar) {
+		return initExtraView(activity, view, R.layout.fag_extra_view, listener, extra_level, ifOverlayTitleBar);
 	}
 
 	public static boolean isExtraViewShowing(View view) {
