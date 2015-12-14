@@ -15,7 +15,7 @@
     
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:name="com.artion.androiddemos.BaseApplication"
@@ -43,6 +43,7 @@
         <activity android:name="com.artion.androiddemos.MoveViewDemo" />
         <activity android:name="com.artion.androiddemos.ImagePressedDemo" />
         <activity android:name="com.artion.androiddemos.ExtraViewDemo" />
+        <activity android:name="com.artion.androiddemos.NettyDemo" />
         
         
         <activity

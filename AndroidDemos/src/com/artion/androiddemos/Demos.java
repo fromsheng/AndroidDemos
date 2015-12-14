@@ -45,6 +45,7 @@ public class Demos extends BaseActivity {
 		actNames.add("MoveViewDemo");
 		actNames.add("ImagePressedDemo");
 		actNames.add("ExtraViewDemo");
+		actNames.add("NettyDemo");
 	}
 
 	@Override
