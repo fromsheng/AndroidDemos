@@ -1,0 +1,9 @@
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/lucky_service_description"
+    android:accessibilityEventTypes="typeNotificationStateChanged|typeWindowStateChanged|typeWindowContentChanged"
+    android:packageNames="com.tencent.mm"
+    android:accessibilityFlags=""
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:notificationTimeout="0"
+    android:canRetrieveWindowContent="true"
+/>

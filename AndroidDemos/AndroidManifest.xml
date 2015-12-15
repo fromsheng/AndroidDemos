@@ -44,6 +44,8 @@
         <activity android:name="com.artion.androiddemos.ImagePressedDemo" />
         <activity android:name="com.artion.androiddemos.ExtraViewDemo" />
         <activity android:name="com.artion.androiddemos.NettyDemo" />
+        <activity android:name="com.artion.androiddemos.NoticationDemo" />
+        <activity android:name="com.artion.androiddemos.LuckySettingDemo" />
         
         
         <activity
@@ -83,6 +85,16 @@
         
         <activity android:name="com.artion.androiddemos.GridViewMenuDemo" />
         <activity android:name="com.artion.androiddemos.OnGestureDemo" />
+        
+        <service android:name="com.artion.androiddemos.service.LuckyService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:label="@string/lucky_service_label">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/lucky_service_config"/>
+        </service>
         
     </application>
 

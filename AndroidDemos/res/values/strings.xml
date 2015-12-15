@@ -22,4 +22,7 @@
 	<string name="footer_menu_college">通讯录</string>
 	<string name="footer_menu_app">应用</string>
 	<string name="footer_menu_discovery">发现</string>
+	
+	<string name="lucky_service_label">红包杀手</string>
+	<string name="lucky_service_description">快抢红包</string>
 </resources>
