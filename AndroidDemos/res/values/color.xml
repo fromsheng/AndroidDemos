@@ -5,4 +5,6 @@
     <drawable name="gray">#ccc</drawable>
     
     <color name="highlighttext">#00ff00</color>
+    <color name="tab_menu_normal">#3f3f3f</color>
+    <color name="tab_menu_down">#3cbaff</color>
 </resources>

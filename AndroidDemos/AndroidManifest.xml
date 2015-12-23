@@ -46,6 +46,7 @@
         <activity android:name="com.artion.androiddemos.NettyDemo" />
         <activity android:name="com.artion.androiddemos.NoticationDemo" />
         <activity android:name="com.artion.androiddemos.LuckySettingDemo" />
+        <activity android:name="com.artion.androiddemos.TabMenuDemo" />
         
         
         <activity

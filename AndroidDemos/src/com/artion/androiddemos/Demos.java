@@ -48,6 +48,7 @@ public class Demos extends BaseActivity {
 		actNames.add("NettyDemo");
 		actNames.add("NoticationDemo");
 		actNames.add("LuckySettingDemo");
+		actNames.add("TabMenuDemo");
 	}
 
 	@Override
