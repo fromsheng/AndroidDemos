@@ -6,6 +6,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
+import com.artion.androiddemos.R;
 import com.artion.androiddemos.common.TimerUtils.TimerListener;
 
 /**
@@ -25,8 +26,8 @@ public class ViewUtils {
 		if(MAX_COUNT < 2) {
 			return true;
 		}
-		final int TAG_ID_TIME = view.getId() + 1;
-		final int TAG_ID_CLICKTIMES = view.getId() + 2;
+		final int TAG_ID_TIME = R.id.on_view_click + 1;
+		final int TAG_ID_CLICKTIMES = R.id.on_view_click + 2;
 		
 		Long t1 = (Long) view.getTag(TAG_ID_TIME);
 		Integer count1 = (Integer) view.getTag(TAG_ID_CLICKTIMES);
@@ -67,8 +68,8 @@ public class ViewUtils {
 	 * @return
 	 */
 	public static int onViewClickTimes(final View view, final int DIFF_TIME, final OnViewClickListener listener) {
-		final int TAG_ID_CLICKTIMES = view.getId() + 20;
-		final int TAG_ID_TIMERUTILS = view.getId() + 30;
+		final int TAG_ID_CLICKTIMES = R.id.on_view_click + 20;
+		final int TAG_ID_TIMERUTILS = R.id.on_view_click + 30;
 		
 		Integer count1 = (Integer) view.getTag(TAG_ID_CLICKTIMES);
 		TimerUtils timer = (TimerUtils) view.getTag(TAG_ID_TIMERUTILS);

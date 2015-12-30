@@ -2,4 +2,5 @@
 <resources>
     <item type="id" name="extra_view_listener"></item>
     <item type="id" name="extra_view_cancel_level"></item>
+    <item type="id" name="on_view_click"></item>
 </resources>
