@@ -7,6 +7,9 @@ import com.artion.androiddemos.adapter.GridMenuItem;
 import com.artion.androiddemos.adapter.TabMenuBottomAdapter;
 import com.artion.androiddemos.adapter.TabMenuItem;
 import com.artion.androiddemos.adapter.TabMenuTopAdapter;
+import com.artion.androiddemos.common.ToastUtils;
+import com.artion.androiddemos.mybase.MyTabMenuTopAdapter;
+import com.artion.androiddemos.mybase.MyTabMenuTopAdapter2;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,7 +22,9 @@ import android.widget.GridView;
 public class TabMenuDemo extends BaseActivity {
 
 	private GridView topGrid, bottomGrid;
-	private TabMenuTopAdapter topAdapter;
+//	private TabMenuTopAdapter topAdapter;
+//	private MyTabMenuTopAdapter topAdapter;
+	private MyTabMenuTopAdapter2 topAdapter;
 	private TabMenuBottomAdapter bottomAdapter;
 	private List<TabMenuItem> topItems, bottomItems;
 	
@@ -85,7 +90,9 @@ public class TabMenuDemo extends BaseActivity {
 		topGrid.setSelector(new ColorDrawable(Color.TRANSPARENT));
 		bottomGrid.setSelector(new ColorDrawable(Color.TRANSPARENT));
 		topItems = getItems(3, 1, true);
-		topAdapter = new TabMenuTopAdapter(mAct, topItems);
+//		topAdapter = new TabMenuTopAdapter(mAct, topItems);
+//		topAdapter = new MyTabMenuTopAdapter(mAct, topItems);
+		topAdapter = new MyTabMenuTopAdapter2(mAct, topItems);
 		topGrid.setAdapter(topAdapter);
 		
 		bottomItems = getItems(5, 3, true);
@@ -104,6 +111,8 @@ public class TabMenuDemo extends BaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				topAdapter.selectedPosition(position);
+				
+				ToastUtils.showMessage(mAct, topAdapter.getItem(position).titleId);
 			}
 		});
 		
@@ -113,6 +122,7 @@ public class TabMenuDemo extends BaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				bottomAdapter.selectedPosition(position);
+				ToastUtils.showMessage(mAct, bottomAdapter.getItem(position).titleId);
 			}
 		});
 		
