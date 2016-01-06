@@ -6,4 +6,5 @@
     android:accessibilityFeedbackType="feedbackAllMask"
     android:notificationTimeout="0"
     android:canRetrieveWindowContent="true"
+    android:settingsActivity="com.artion.androiddemos.LuckySettingDemo"
 />
