@@ -15,6 +15,47 @@ import com.artion.androiddemos.common.TimerUtils.TimerListener;
  * @since 2014-12-01
  */
 public class ViewUtils {
+	public static int DUPLICATE_DIFF_TIME = 500;
+	/**
+	 * 连续点击时屏蔽DUPLICATE_DIFF_TIME内的其他点击
+	 * @param view
+	 * @return
+	 */
+	public static boolean isDuplicateClicks(View view) {
+		return isDuplicateClicks(view, DUPLICATE_DIFF_TIME, true);
+	}
+	
+	/**
+	 * 控件是否正在被多次点击
+	 * @param view
+	 * @param DIFF_TIME 点击时间差（毫秒），可选500，或 1000等
+	 * @param isCountEveryTime 是否每次都计算，如果不是按DIFF_TIME时重新计算，在连点中也会到点执行
+	 * @return
+	 */
+	public static boolean isDuplicateClicks(View view, final int DIFF_TIME, boolean isCountEveryTime) {
+		if(view == null) {
+			return false;
+		}
+		Long t1 = (Long) view.getTag(R.id.on_view_click);
+		if(t1 == null) {
+			t1 = Long.valueOf(0);
+		}
+		
+		long t2 = System.currentTimeMillis();
+		if(isCountEveryTime) {
+			view.setTag(R.id.on_view_click, t2);
+		}
+		
+		if(Math.abs(t2 - t1) > DIFF_TIME) {
+			if(!isCountEveryTime) {
+				view.setTag(R.id.on_view_click, t2);
+			}
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * 控件是否被连续点击多少次
 	 * @param view 控件必须设置id

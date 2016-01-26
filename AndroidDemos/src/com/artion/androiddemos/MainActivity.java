@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		findViewById(R.id.button12).setOnClickListener(this);
 		findViewById(R.id.button13).setOnClickListener(this);
 		findViewById(R.id.button14).setOnClickListener(this);
+		findViewById(R.id.imageButton1).setOnClickListener(this);
 		
 		int statusBarHeight = ActivityIntentTools.getWindowStatusBarHeight(MainActivity.this);
 		int titleBarHeight = ActivityIntentTools.getTitleBarHeight(MainActivity.this);
@@ -89,11 +90,21 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		return true;
 	}
 
+	int count = 0;
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
 		switch (v.getId()) {
+		case R.id.imageButton1:
+//			DebugTool.info("ViewUtils", "是否正在多次点击：" + ViewUtils.isDuplicateClicks(v, 500, true));
+//			if(!ViewUtils.isDuplicateClicks(v, 2000, true)) {
+//				ToastUtils.showMessage(mAct, "我被点了" + (++ count));
+//			}
+			if(!ViewUtils.isDuplicateClicks(v, 500, true)) {
+				ToastUtils.showMessage(mAct, "我被点了" + (++ count));
+			}
+			break;
 		case R.id.textView1:
 			ActivityIntentTools.gotoActivityNotFinish(MainActivity.this, Demos.class);
 			break;
