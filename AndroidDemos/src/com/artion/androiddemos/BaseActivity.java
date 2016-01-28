@@ -28,7 +28,7 @@ public class BaseActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		BaseApplication.getInstance().removeActivity(this);
-		DebugTool.info("BaseActivity", tag + " onCreate...");
+		DebugTool.info("BaseActivity", tag + " onDestroy...");
 	}
 	
 	@Override

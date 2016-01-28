@@ -7,6 +7,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,12 +23,16 @@ public class AnimationDemo extends BaseActivity {
 	private Button btn1, btn2, btn3;
 	
 	private TimerUtils timerUtils;
+	
+	private Animation animation = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		timerUtils = new TimerUtils();
+		
+		animation = AnimationUtils.loadAnimation(mAct, R.anim.move_anim);
 		
 		setContentView(R.layout.act_button);
 		
@@ -43,6 +48,7 @@ public class AnimationDemo extends BaseActivity {
 		btn1 = (Button) findViewById(R.id.button1);
 		btn2 = (Button) findViewById(R.id.button2);
 		btn3 = (Button) findViewById(R.id.button3);
+		
 	}
 
 	@Override
@@ -76,6 +82,8 @@ public class AnimationDemo extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 //				DeviceTool.shockView(btn1);
+				btn2.clearAnimation();
+				btn2.startAnimation(animation);
 				
 				timerUtils.startTimer(3000, new TimerListener() {
 					
