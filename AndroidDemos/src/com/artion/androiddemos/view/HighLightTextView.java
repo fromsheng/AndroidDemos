@@ -3,8 +3,8 @@ package com.artion.androiddemos.view;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.artion.androiddemos.ImageViewSrcDemo;
 import com.artion.androiddemos.MainActivity;
+import com.artion.androiddemos.acts.ImageViewSrcDemo;
 import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 

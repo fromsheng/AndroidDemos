@@ -8,8 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 
-import com.artion.androiddemos.AnimationDemo;
 import com.artion.androiddemos.R;
+import com.artion.androiddemos.acts.AnimationDemo;
 
 /**
  * Notification相关常用操作类

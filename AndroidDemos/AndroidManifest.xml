@@ -26,30 +26,30 @@
         
         
         <activity android:name="com.artion.androiddemos.Demos" />
-        <activity android:name="com.artion.androiddemos.SessionAct" />
-        <activity android:name="com.artion.androiddemos.PopupWindowDemoActivity" />
-        <activity android:name="com.artion.androiddemos.SensorTestActivity" />
-        <activity android:name="com.artion.androiddemos.ViewPopupWindowDemo" />
-        <activity android:name="com.artion.androiddemos.CroutonDemo" />
-        <activity android:name="com.artion.androiddemos.TopPopupDemo" />
-        <activity android:name="com.artion.androiddemos.LoadingDialogDemo" />
-        <activity android:name="com.artion.androiddemos.MainDemos" />
-        <activity android:name="com.artion.androiddemos.AnimationDemo" />
-        <activity android:name="com.artion.androiddemos.StartDoDemo" />
-        <activity android:name="com.artion.androiddemos.MyDrawViewAct" />
-        <activity android:name="com.artion.androiddemos.EditTextDemo"
+        <activity android:name="com.artion.androiddemos.acts.SessionAct" />
+        <activity android:name="com.artion.androiddemos.acts.PopupWindowDemoActivity" />
+        <activity android:name="com.artion.androiddemos.acts.SensorTestActivity" />
+        <activity android:name="com.artion.androiddemos.acts.ViewPopupWindowDemo" />
+        <activity android:name="com.artion.androiddemos.acts.CroutonDemo" />
+        <activity android:name="com.artion.androiddemos.acts.TopPopupDemo" />
+        <activity android:name="com.artion.androiddemos.acts.LoadingDialogDemo" />
+        <activity android:name="com.artion.androiddemos.acts.MainDemos" />
+        <activity android:name="com.artion.androiddemos.acts.AnimationDemo" />
+        <activity android:name="com.artion.androiddemos.acts.StartDoDemo" />
+        <activity android:name="com.artion.androiddemos.acts.MyDrawViewAct" />
+        <activity android:name="com.artion.androiddemos.acts.EditTextDemo"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.artion.androiddemos.ImageCompressDemo" />
-        <activity android:name="com.artion.androiddemos.MoveViewDemo" />
-        <activity android:name="com.artion.androiddemos.ImagePressedDemo" />
-        <activity android:name="com.artion.androiddemos.ExtraViewDemo" />
-        <activity android:name="com.artion.androiddemos.NettyDemo" />
-        <activity android:name="com.artion.androiddemos.NoticationDemo" />
-        <activity android:name="com.artion.androiddemos.LuckySettingDemo" />
-        <activity android:name="com.artion.androiddemos.TabMenuDemo" />
-        <activity android:name="com.artion.androiddemos.AnimatorDemo" />
-        <activity android:name="com.artion.androiddemos.SurfaceViewDemo" />
-        <activity android:name="com.artion.androiddemos.RoundDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ImageCompressDemo" />
+        <activity android:name="com.artion.androiddemos.acts.MoveViewDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ImagePressedDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ExtraViewDemo" />
+        <activity android:name="com.artion.androiddemos.acts.NettyDemo" />
+        <activity android:name="com.artion.androiddemos.acts.NoticationDemo" />
+        <activity android:name="com.artion.androiddemos.acts.LuckySettingDemo" />
+        <activity android:name="com.artion.androiddemos.acts.TabMenuDemo" />
+        <activity android:name="com.artion.androiddemos.acts.AnimatorDemo" />
+        <activity android:name="com.artion.androiddemos.acts.SurfaceViewDemo" />
+        <activity android:name="com.artion.androiddemos.acts.RoundDemo" />
         
         
         <activity
@@ -63,9 +63,9 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.artion.androiddemos.ListDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ListDemo" />
         
-        <activity android:name="com.artion.androiddemos.SingleImageViewDemo" >
+        <activity android:name="com.artion.androiddemos.acts.SingleImageViewDemo" >
             <intent-filter >
                 <action android:name="android.intent.action.VIEW" />
             	<category android:name="android.intent.category.DEFAULT" />
@@ -73,22 +73,22 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.artion.androiddemos.MultiImageViewDemo" />
+        <activity android:name="com.artion.androiddemos.acts.MultiImageViewDemo" />
         
-        <activity android:name="com.artion.androiddemos.ListDownDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ListDownDemo" />
         
         <activity android:name="com.artion.androiddemos.highlight.HighLightTextViewDemo" />
         
-        <activity android:name="com.artion.androiddemos.ImageViewSrcDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ImageViewSrcDemo" />
         
-        <activity android:name="com.artion.androiddemos.TranslateDemo" />
+        <activity android:name="com.artion.androiddemos.acts.TranslateDemo" />
         
-        <activity android:name="com.artion.androiddemos.TextViewLongDemo" />
+        <activity android:name="com.artion.androiddemos.acts.TextViewLongDemo" />
         
-        <activity android:name="com.artion.androiddemos.TextLongDemo" />
+        <activity android:name="com.artion.androiddemos.acts.TextLongDemo" />
         
-        <activity android:name="com.artion.androiddemos.GridViewMenuDemo" />
-        <activity android:name="com.artion.androiddemos.OnGestureDemo" />
+        <activity android:name="com.artion.androiddemos.acts.GridViewMenuDemo" />
+        <activity android:name="com.artion.androiddemos.acts.OnGestureDemo" />
         
         <service android:name="com.artion.androiddemos.service.LuckyService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"

@@ -1,17 +1,21 @@
-package com.artion.androiddemos;
+package com.artion.androiddemos.acts;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class Demos extends BaseActivity {
+import com.artion.androiddemos.R;
+import com.artion.androiddemos.R.id;
+import com.artion.androiddemos.R.layout;
+import com.artion.androiddemos.frame.FrameActivity;
+
+public class MainDemos extends FrameActivity {
 	
 	private ListView listView;
 	private List<String> actNames;
@@ -36,51 +40,22 @@ public class Demos extends BaseActivity {
 		actNames.add("CroutonDemo");
 		actNames.add("TopPopupDemo");
 		actNames.add("LoadingDialogDemo");
-		actNames.add("MainDemos");
-		actNames.add("AnimationDemo");
-		actNames.add("StartDoDemo");
-		actNames.add("MyDrawViewAct");
-		actNames.add("EditTextDemo");
-		actNames.add("ImageCompressDemo");
-		actNames.add("MoveViewDemo");
-		actNames.add("ImagePressedDemo");
-		actNames.add("ExtraViewDemo");
-		actNames.add("NettyDemo");
-		actNames.add("NoticationDemo");
-		actNames.add("LuckySettingDemo");
-		actNames.add("TabMenuDemo");
-		actNames.add("AnimatorDemo");
-		actNames.add("SurfaceViewDemo");
-		actNames.add("RoundDemo");
 	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.act_demos);
-		
-		initLayout();
-		initListener();
+	public int getLayoutRid() {
+		return R.layout.act_demos;
 	}
 
 	@Override
-	protected void initLayout() {
-		// TODO Auto-generated method stub
-		super.initLayout();
-		
+	public void initLayout() {
 		listView = (ListView) findViewById(R.id.listview);
 		initActNames();
 		listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, actNames));
-		
 	}
 
 	@Override
-	protected void initListener() {
-		// TODO Auto-generated method stub
-		super.initListener();
-		
+	public void initListener() {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
