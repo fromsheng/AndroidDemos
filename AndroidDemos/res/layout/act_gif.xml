@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal" >
+
+    <com.ant.liao.GifView
+        android:id="@+id/gif1"
+        android:layout_width="30px"
+        android:layout_height="30px"
+        android:layout_marginTop="10px" />
+
+    <com.ant.liao.GifView
+        android:id="@+id/gif2"
+        android:layout_width="60px"
+        android:layout_height="60px"
+        android:layout_marginTop="10px" />
+
+    <com.ant.liao.GifView
+        android:id="@+id/gif3"
+        android:layout_width="140px"
+        android:layout_height="140px"
+        android:layout_marginTop="10px" />
+    
+    <com.ant.liao.GifView
+        android:id="@+id/gif4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px" />
+
+</LinearLayout>

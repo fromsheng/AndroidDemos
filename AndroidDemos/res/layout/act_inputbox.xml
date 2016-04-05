@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:id="@+id/rootview">
+    <ListView
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1"
+	    android:id="@+id/listview" >
+	</ListView>
+	
+    <LinearLayout android:id="@+id/ll_bottom"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#ffffff"
+	    android:orientation="vertical" >
+	    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+		    <EditText android:id="@+id/inputbox"
+		        android:layout_width="match_parent"
+		        android:layout_height="60dp"
+		        android:layout_weight="1"
+		        android:hint="hello"/>
+		    <ImageView android:id="@+id/inputmore"
+	        android:layout_width="48dp"
+	        android:layout_height="48dp"
+	        android:scaleType="centerCrop"
+	        android:src="@drawable/common_btn_app_down"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout android:id="@+id/inputextra"
+		    android:layout_width="match_parent"
+		    android:layout_height="800px"
+		    android:orientation="vertical" >
+		    <Button android:id="@+id/inputextra_btn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="right"
+		        android:text="完全"/>
+	        <TextView android:id="@+id/inputextra_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:text="不知道"/>
+	    </LinearLayout>
+	</LinearLayout>
+</LinearLayout>

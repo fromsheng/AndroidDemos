@@ -611,6 +611,17 @@ public class DeviceTool {
 		}
 	}
 	
+	public static boolean isInputMethodActive(Context ctx) {
+		try {
+			InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+			
+			return imm.isActive();
+			
+		} catch (Exception e) {
+		}
+		return false;
+	}
+	
 	/**
 	 * 隐藏软键盘
 	 * @param ct

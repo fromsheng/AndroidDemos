@@ -50,6 +50,10 @@
         <activity android:name="com.artion.androiddemos.acts.AnimatorDemo" />
         <activity android:name="com.artion.androiddemos.acts.SurfaceViewDemo" />
         <activity android:name="com.artion.androiddemos.acts.RoundDemo" />
+        <activity android:name="com.artion.androiddemos.acts.InputBoxDemo" 
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name="com.artion.androiddemos.acts.GifDemo" />
+        <activity android:name="com.artion.androiddemos.acts.OnTouchDemo" />
         
         
         <activity

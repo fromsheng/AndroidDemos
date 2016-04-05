@@ -52,6 +52,8 @@ public class Demos extends BaseActivity {
 		actNames.add("AnimatorDemo");
 		actNames.add("SurfaceViewDemo");
 		actNames.add("RoundDemo");
+		actNames.add("InputBoxDemo");
+		actNames.add("OnTouchDemo");
 	}
 
 	@Override

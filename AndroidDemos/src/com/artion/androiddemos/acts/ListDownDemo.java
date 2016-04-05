@@ -1,29 +1,33 @@
 package com.artion.androiddemos.acts;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
-import android.widget.AdapterView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.artion.androiddemos.BaseActivity;
 import com.artion.androiddemos.R;
-import com.artion.androiddemos.R.anim;
-import com.artion.androiddemos.R.id;
-import com.artion.androiddemos.R.layout;
 import com.artion.androiddemos.common.ToastUtils;
 import com.artion.androiddemos.utils.DebugTool;
 
@@ -32,6 +36,8 @@ public class ListDownDemo extends BaseActivity {
 	private Button btn;
 	private TextView tv;
 	private ListView lv;
+	ArrayAdapter mAdapter;
+	List<String> lists = new ArrayList<String>();
 	private LinearLayout ll;
 	
 	private boolean isShowing = false;
@@ -48,6 +54,7 @@ public class ListDownDemo extends BaseActivity {
 
 	private static int lastPos, firstTop;
 	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -57,6 +64,24 @@ public class ListDownDemo extends BaseActivity {
 		
 		initLayout();
 		initListener();
+		
+		WindowManager wm = getWindowManager();
+		Window window = getWindow();
+		window.getDecorView().addOnLayoutChangeListener(new OnLayoutChangeListener() {
+			
+			@Override
+			public void onLayoutChange(View v, int left, int top, int right,
+					int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+				DebugTool.info(tag, "onLayoutChange new== " + left + "==" + top + "==" + right + "==" + bottom);
+				DebugTool.info(tag, "onLayoutChange old== " + oldLeft + "==" + oldTop + "==" + oldRight + "==" + oldBottom);
+			}
+		});
+	}
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		DebugTool.info(tag, "onWindowFocusChanged == " + hasFocus);
 	}
 
 	@Override
@@ -87,7 +112,12 @@ public class ListDownDemo extends BaseActivity {
 			}
 		});
 		
-		lv.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrays));
+//		mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrays);
+		for (int i = 0; i < 20; i++) {
+			lists.add("abcdefghijklmnopqrstuvwxyz" + i); 
+		}
+		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lists);
+		lv.setAdapter(mAdapter);
 		
 		pushDown = AnimationUtils.loadAnimation(this, R.anim.push_down);
 		pushUp = AnimationUtils.loadAnimation(this, R.anim.push_up);
@@ -140,10 +170,75 @@ public class ListDownDemo extends BaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				ToastUtils.showMessage(ListDownDemo.this, "点击了 " + arrays[arg2]);
+				ToastUtils.showMessage(ListDownDemo.this, "点击了 " + lists.get(arg2));
+			}
+		});
+		
+		lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+//				deleteCell(arg1, arg2);
+				delRightTranslate(arg1, arg2);
+				return true;
 			}
 		});
 	}
+	
+	private void deleteCell(final View v, final int index) {  
+	    AnimationListener al = new AnimationListener() {  
+	        @Override  
+	        public void onAnimationEnd(Animation arg0) {  
+	        	
+	            lists.remove(index);
+	            mAdapter.notifyDataSetChanged();  
+	        }  
+	        @Override public void onAnimationRepeat(Animation animation) {}  
+	        @Override public void onAnimationStart(Animation animation) {}  
+	    };  
+	  
+	    collapse(v, al);  
+	}  
+	  
+	private void collapse(final View v, AnimationListener al) {  
+	    final int initialHeight = v.getMeasuredHeight();  
+	    final int initialWidth = v.getMeasuredWidth();  
+	    final int paddingLeft = v.getPaddingLeft();
+	    final int paddingTop = v.getPaddingTop();
+	    final int paddingRight = v.getPaddingRight();
+	    final int paddingBottom = v.getPaddingBottom();
+	    
+	  
+	    Animation anim = new Animation() {  
+	        @Override  
+	        protected void applyTransformation(float interpolatedTime, Transformation t) {  
+	            if (interpolatedTime == 1) {  
+	                v.getLayoutParams().height = 0;
+	                v.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+	                v.requestLayout();  
+	            }  
+	            else {  
+//	                v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);  
+//	                v.getLayoutParams().width = initialWidth - (int)(initialWidth * interpolatedTime); 
+	            	
+	                v.setPadding((int)(initialWidth * interpolatedTime), paddingTop, paddingRight, paddingBottom);
+	                v.requestLayout();  
+	            }  
+	        }  
+	  
+	        @Override  
+	        public boolean willChangeBounds() {  
+	            return true;  
+	        }  
+	    };  
+	  
+	    if (al!=null) {  
+	        anim.setAnimationListener(al);  
+	    }  
+	    anim.setDuration(500);  
+	    v.startAnimation(anim);  
+	}  
 	
 	private void ajustView(boolean isShowing) {
 		if(isShowing){
@@ -159,6 +254,33 @@ public class ListDownDemo extends BaseActivity {
 			startTranslate(lv, 0, 100, View.VISIBLE);
 //			startTranslate(tv, 0, 100, View.GONE);//如需tv也跟着走解注释
 		}
+	}
+	
+	private void delRightTranslate(final View view, final int index) {
+		TranslateAnimation animation = new TranslateAnimation(0, view.getWidth(), 0, 0);
+		animation.setDuration(500);
+//		animation.setFillAfter(true);//只是将view移动到了目标位置，但是view绑定的点击事件还在原来位置
+		animation.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				
+				lists.remove(index);
+	            mAdapter.notifyDataSetChanged();  				
+				
+			}
+		});
+//		view.setAnimation(animation);
+		view.startAnimation(animation);
 	}
 	
 	private void startTranslate(final View view, final int fromY, final int toY, final int status) {
