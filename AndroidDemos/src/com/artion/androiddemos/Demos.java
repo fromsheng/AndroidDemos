@@ -18,6 +18,7 @@ public class Demos extends BaseActivity {
 	
 	private void initActNames() {
 		actNames = new ArrayList<String>();
+		actNames.add("ActJumpA");
 		actNames.add("MainActivity");
 		actNames.add("ListDemo");
 		actNames.add("ListDownDemo");

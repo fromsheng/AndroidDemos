@@ -54,6 +54,10 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name="com.artion.androiddemos.acts.GifDemo" />
         <activity android:name="com.artion.androiddemos.acts.OnTouchDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ActJumpA"
+            android:label="ActJumpA" />
+        <activity android:name="com.artion.androiddemos.acts.ActJumpB"
+            android:label="ActJumpB" />
         
         
         <activity
