@@ -4,25 +4,33 @@ import java.io.File;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.TimeZone;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.app.Service;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.StatFs;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Calendars;
+import android.provider.CalendarContract.Events;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -883,4 +891,5 @@ public class DeviceTool {
     	ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     	return new SpannedString(ss);
     }
+    
 }

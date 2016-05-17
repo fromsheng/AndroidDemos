@@ -127,43 +127,43 @@ public class OnTouchDemo extends BaseActivity {
 				return true;
 			}
 		});*/
-//		btn1.setOnTouchListener(new OnTouchListener() {
-//			
-//			@Override
-//			public boolean onTouch(View v, MotionEvent event) {
-//				switch (event.getAction()) {
-//				case MotionEvent.ACTION_DOWN:
-//					firstDownTime = System.currentTimeMillis();
-//					DebugTool.info(tag, "ACTION_DOWN");
-//					break;
-//				case MotionEvent.ACTION_MOVE:
-//					if(firstDownTime != 0L && System.currentTimeMillis() - firstDownTime > 500) {
-//						firstDownTime = 0L;
-//						popLayout.setVisibility(View.VISIBLE);
-//					}
-//					DebugTool.info(tag, "ACTION_MOVE");
-//					break;
-//				case MotionEvent.ACTION_UP:
-//					DebugTool.info(tag, "ACTION_UP");
-//					ToastUtils.showMessage(mAct, "ACTION_UP");
-//					popLayout.setVisibility(View.GONE);
-//					break;
-//					
-//				default:
-//					break;
-//				}
-//				return false;
-//			}
-//		});
-		
-		btn1.setOnClickListener(new OnClickListener() {
+		btn1.setOnTouchListener(new OnTouchListener() {
 			
-			@SuppressLint("NewApi")
 			@Override
-			public void onClick(View v) {
-				getWindow().getDecorView().setHovered(true);		
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					firstDownTime = System.currentTimeMillis();
+					DebugTool.info(tag, "ACTION_DOWN");
+					break;
+				case MotionEvent.ACTION_MOVE:
+					if(firstDownTime != 0L && System.currentTimeMillis() - firstDownTime > 500) {
+						firstDownTime = 0L;
+						popLayout.setVisibility(View.VISIBLE);
+					}
+					DebugTool.info(tag, "ACTION_MOVE");
+					break;
+				case MotionEvent.ACTION_UP:
+					DebugTool.info(tag, "ACTION_UP");
+					ToastUtils.showMessage(mAct, "ACTION_UP");
+					popLayout.setVisibility(View.GONE);
+					break;
+					
+				default:
+					break;
+				}
+				return false;
 			}
 		});
+		
+//		btn1.setOnClickListener(new OnClickListener() {
+//			
+//			@SuppressLint("NewApi")
+//			@Override
+//			public void onClick(View v) {
+//				getWindow().getDecorView().setHovered(true);		
+//			}
+//		});
 
 	}
 	

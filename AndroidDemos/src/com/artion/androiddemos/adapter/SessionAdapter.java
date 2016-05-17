@@ -4,7 +4,9 @@ import java.util.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
@@ -12,9 +14,8 @@ import com.artion.androiddemos.R;
 import com.artion.androiddemos.baseview.impl.SessionItemCommonImageView;
 import com.artion.androiddemos.baseview.impl.SessionItemCommonShareView;
 import com.artion.androiddemos.baseview.impl.SessionItemCommonTextView;
-import com.artion.androiddemos.baseview.impl.SessionItemCommonTextViewHolder;
-import com.artion.androiddemos.baseview.impl.SessionLeftRight;
 import com.artion.androiddemos.domain.SessionItem;
+import com.artion.androiddemos.utils.DebugTool;
 
 public class SessionAdapter extends BaseAdapter {
 	
@@ -57,6 +58,38 @@ public class SessionAdapter extends BaseAdapter {
 		switch (item.sessionType) {
 		case SessionItem.SESSION_TYPE_TEXT:
 			SessionItemCommonTextView.getInstance(convertView, R.layout.biz_session_item_common_text).bindView(item);
+			convertView.setOnTouchListener(new OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					
+					switch (event.getAction()) {
+					case MotionEvent.ACTION_CANCEL:
+						DebugTool.info("MotionEvent", "ACTION_CANCEL");
+						v.getParent().requestDisallowInterceptTouchEvent(false);
+						break;
+					case MotionEvent.ACTION_UP:
+						DebugTool.info("MotionEvent", "ACTION_UP");
+						v.getParent().requestDisallowInterceptTouchEvent(false);
+						break;
+					case MotionEvent.ACTION_DOWN:
+						DebugTool.info("MotionEvent", "ACTION_DOWN");
+						v.getParent().requestDisallowInterceptTouchEvent(true);
+						break;
+					case MotionEvent.ACTION_MOVE:
+						DebugTool.info("MotionEvent", "ACTION_MOVE");
+						break;
+					case MotionEvent.ACTION_MASK:
+						DebugTool.info("MotionEvent", "ACTION_MASK");
+						break;
+
+					default:
+						break;
+					}
+					
+					return true;
+				}
+			});
 			break;
 		case SessionItem.SESSION_TYPE_SHARE:
 			SessionItemCommonShareView.getInstance(convertView, R.layout.biz_session_item_common_share).bindView(item);
