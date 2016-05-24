@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.artion.androiddemos.acts.ActInterfaceDemo;
 import com.artion.androiddemos.acts.GridViewMenuDemo;
 import com.artion.androiddemos.acts.ImageViewSrcDemo;
 import com.artion.androiddemos.acts.ListDemo;
@@ -29,7 +31,9 @@ import com.artion.androiddemos.common.ViewUtils;
 import com.artion.androiddemos.common.ViewUtils.OnViewClickListener;
 import com.artion.androiddemos.dialog.KdAlertBuilder;
 import com.artion.androiddemos.dialog.KdAlertBuilder.KdAlertItemListener;
+import com.artion.androiddemos.domain.ActInterfaceModel;
 import com.artion.androiddemos.highlight.HighLightTextViewDemo;
+import com.artion.androiddemos.impl.ActInterface;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DebugTool;
 
@@ -59,6 +63,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		findViewById(R.id.button13).setOnClickListener(this);
 		findViewById(R.id.button14).setOnClickListener(this);
 		findViewById(R.id.imageButton1).setOnClickListener(this);
+		findViewById(R.id.textView2).setOnClickListener(this);
 		
 		int statusBarHeight = ActivityIntentTools.getWindowStatusBarHeight(MainActivity.this);
 		int titleBarHeight = ActivityIntentTools.getTitleBarHeight(MainActivity.this);
@@ -235,6 +240,20 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.button14:
 			ActivityIntentTools.gotoActivityNotFinish(MainActivity.this, OnGestureDemo.class);
+			break;	
+		case R.id.textView2:
+			ActInterface actInterface = new ActInterfaceModel();
+			DebugTool.info("ActInterface", "传前== " + actInterface.toString());
+//			ActInterface actInterface = new ActInterface() {//这种方式创建的传不了？？
+//				
+//				@Override
+//				public void onClick(String text) {
+//					ToastUtils.showMessage(mAct, text);
+//				}
+//			};
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("ActInterface", actInterface);
+			ActivityIntentTools.gotoActivityNotFinishWithBundle(MainActivity.this, ActInterfaceDemo.class, bundle);
 			break;	
 		default:
 			break;
