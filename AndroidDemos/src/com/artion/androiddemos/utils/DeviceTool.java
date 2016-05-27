@@ -9,9 +9,12 @@ import java.util.Enumeration;
 import java.util.TimeZone;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.app.Service;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -890,6 +893,39 @@ public class DeviceTool {
     	AbsoluteSizeSpan ass = new AbsoluteSizeSpan(textSizeInDp, true);
     	ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     	return new SpannedString(ss);
+    }
+    
+    @SuppressLint("NewApi")
+	public static void copyToClipboard(Context context, String label, String text) {
+    	if(text == null) {
+    		return;
+    	}
+    	
+    	ClipboardManager cb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    	ClipData data = ClipData.newPlainText(label, text);
+		cb.setPrimaryClip(data);
+    }
+    
+    @SuppressLint("NewApi")
+	public static void copyToClipboard(Context context, Intent intent) {
+    	if(intent == null) {
+    		return;
+    	}
+    	
+    	ClipboardManager cb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    	ClipData data = ClipData.newIntent("Intent", intent);
+		cb.setPrimaryClip(data);
+    }
+    
+    @SuppressLint("NewApi")
+	public static void copyToClipboard(Context context, Uri uri) {
+    	if(uri == null) {
+    		return;
+    	}
+    	
+    	ClipboardManager cb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    	ClipData data = ClipData.newUri(context.getContentResolver(), "URI", uri);
+		cb.setPrimaryClip(data);
     }
     
 }

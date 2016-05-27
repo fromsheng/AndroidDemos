@@ -64,6 +64,8 @@
             android:label="CanlanderDemo" />
         <activity android:name="com.artion.androiddemos.acts.ActInterfaceDemo"
             android:label="ActInterfaceDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ClipboardDemo"
+            android:label="ClipboardDemo" />
         
         
         <activity
