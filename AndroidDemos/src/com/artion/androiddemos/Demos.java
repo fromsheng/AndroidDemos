@@ -19,6 +19,7 @@ public class Demos extends BaseActivity {
 	private void initActNames() {
 		actNames = new ArrayList<String>();
 		actNames.add("ClipboardDemo");
+		actNames.add("AudioManagerDemo");
 		actNames.add("CanlanderDemo");
 		actNames.add("ActJumpA");
 		actNames.add("MainActivity");
