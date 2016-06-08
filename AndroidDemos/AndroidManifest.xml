@@ -69,6 +69,8 @@
             android:label="ClipboardDemo" />
         <activity android:name="com.artion.androiddemos.acts.AudioManagerDemo"
             android:label="ActInterfaceDemo" />
+        <activity android:name="com.artion.androiddemos.acts.ImageLockDemo"
+            android:label="ImageLockDemo" />
         
         
         <activity
