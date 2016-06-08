@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,8 +35,11 @@ import com.artion.androiddemos.highlight.HighLightTextViewDemo;
 import com.artion.androiddemos.impl.ActInterface;
 import com.artion.androiddemos.utils.ActivityIntentTools;
 import com.artion.androiddemos.utils.DebugTool;
+import com.artion.androiddemos.view.TextViewDrawableClick;
 
 public class MainActivity extends BaseActivity implements OnClickListener{
+	
+	TextViewDrawableClick tvDrawable;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,37 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		Uri uri = Uri.parse("cloudhub://status?id=123456");
 		ToastUtils.showMessage(this, uri.getQueryParameter("id"));
 		
+		tvDrawable = (TextViewDrawableClick) findViewById(R.id.tv_drawable);
+		tvDrawable.setDrawableLeftListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ToastUtils.showMessage(mAct, "setDrawableLeftListener");				
+			}
+		});
+		tvDrawable.setDrawableTopListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ToastUtils.showMessage(mAct, "setDrawableTopListener");				
+			}
+		});
+		tvDrawable.setDrawableRightListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ToastUtils.showMessage(mAct, "setDrawableRightListener");				
+			}
+		});
+		tvDrawable.setDrawableBottomListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ToastUtils.showMessage(mAct, "setDrawableBottomListener");				
+			}
+		});
+		
+		findViewById(R.id.tv_drawable).setOnClickListener(this);
 		findViewById(R.id.textView1).setOnClickListener(this);
 		findViewById(R.id.button1).setOnClickListener(this);
 		findViewById(R.id.button2).setOnClickListener(this);
@@ -111,6 +144,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		// TODO Auto-generated method stub
 		
 		switch (v.getId()) {
+		case R.id.tv_drawable:
+			ToastUtils.showMessage(mAct, "我被点了");
+			break;
 		case R.id.imageButton1:
 //			DebugTool.info("ViewUtils", "是否正在多次点击：" + ViewUtils.isDuplicateClicks(v, 500, true));
 //			if(!ViewUtils.isDuplicateClicks(v, 2000, true)) {
