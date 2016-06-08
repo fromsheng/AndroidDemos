@@ -104,6 +104,16 @@
         android:layout_toRightOf="@+id/button3"
         android:src="@drawable/ic_launcher"
         android:text="fdsafdsa" />
+    <com.artion.androiddemos.view.TextViewDrawableClick
+        android:id="@+id/tv_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button5"
+        android:layout_toRightOf="@+id/imageButton1"
+        android:drawableLeft="@drawable/selector_btn_blue"
+        android:drawableRight="@drawable/selector_btn_blue"
+        android:drawableTop="@drawable/selector_btn_blue"
+        android:text="fdsafdsa" />
 
     <TextView
         android:id="@+id/textView2"
