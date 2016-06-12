@@ -8,7 +8,7 @@ import android.view.View;
 import com.artion.androiddemos.R;
 import com.artion.androiddemos.adapter.holder.ImageLockHolder;
 
-public class ImageLockAdapter extends TabMenuAdapter<String, ImageLockHolder> {
+public class ImageLockAdapter extends MyBaseAdapter<String, ImageLockHolder> {
 	
 	protected boolean isLocked = false;
 	
@@ -20,10 +20,6 @@ public class ImageLockAdapter extends TabMenuAdapter<String, ImageLockHolder> {
 		super(context, models);
 	}
 
-	@Override
-	public String selectModel(String model, boolean isSelected) {
-		return null;
-	}
 
 	@Override
 	public int getLayoutId() {
