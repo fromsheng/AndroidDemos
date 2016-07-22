@@ -18,6 +18,7 @@ public class Demos extends BaseActivity {
 	
 	private void initActNames() {
 		actNames = new ArrayList<String>();
+		actNames.add("ShareIntentDemo");
 		actNames.add("ImageLockDemo");
 		actNames.add("ClipboardDemo");
 		actNames.add("AudioManagerDemo");
@@ -59,6 +60,7 @@ public class Demos extends BaseActivity {
 		actNames.add("RoundDemo");
 		actNames.add("InputBoxDemo");
 		actNames.add("OnTouchDemo");
+		
 	}
 
 	@Override
