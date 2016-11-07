@@ -18,6 +18,7 @@ public class Demos extends BaseActivity {
 	
 	private void initActNames() {
 		actNames = new ArrayList<String>();
+		actNames.add("MPushVCodeDemo");
 		actNames.add("ShareIntentDemo");
 		actNames.add("ImageLockDemo");
 		actNames.add("ClipboardDemo");

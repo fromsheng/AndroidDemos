@@ -71,6 +71,8 @@
             android:label="ActInterfaceDemo" />
         <activity android:name="com.artion.androiddemos.acts.ImageLockDemo"
             android:label="ImageLockDemo" />
+        <activity android:name="com.artion.androiddemos.acts.MPushVCodeDemo"
+            android:label="MPushVCodeDemo" />
         <activity android:name="com.artion.androiddemos.acts.ShareIntentDemo"
             android:label="ShareIntentDemo" >
             <intent-filter>  
